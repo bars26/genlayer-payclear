@@ -256,6 +256,15 @@ Each step stores who ran it, how many postings it read, what it paid, and the sh
 
 Final wallet balances: sponsor 18 GEN, cofunder 4 GEN, auditor 2.4 GEN, bystander 1.45 GEN.
 
+## Wallet test from the live app
+
+MetaMask test from the production app (payclear-bars26.vercel.app): the tester reads greenhouse/discord in the wallet-free checker, opens an on-chain audit of it, runs the second step that finishes it, and asks for a fresh reading of one posting. The tester is not a funder of program_0, so both steps were paid. Wallet `0x4f80b5c475fced34fc9a07ffccf39e1adc1406bf`. Every transaction is FINALIZED with execution result SUCCESS.
+
+| Step | GEN sent | Result | Tx |
+|---|---|---|---|
+| Audit on-chain: open_audit(program_0, greenhouse, discord) from the "Check a job board" panel |  | audit_5 opened; validators read the first 25 of 41 postings; step paid 0.05 GEN to the tester | [`0x6cfc1a4e…`](https://explorer-studio.genlayer.com/tx/0x6cfc1a4ebcedccf6f2885693e4151f738d17c37d9beb294c92a7447f956a8c13) |
+| Read the next 25 (step) |  | the last 16 postings read; audit done: 35 postings in scope, 33 with Greenhouse's pay field, 2 with a range in the text read by the validators, 0 without pay (score 100%); step paid 0.05 GEN | [`0xc55a0414…`](https://explorer-studio.genlayer.com/tx/0xc55a0414c0f403eb794d636e6dd1d30fbefd4eed0dd6335fb0137b70e8d24d55) |
+| Read again: posting 8214127002 (Staff Software Engineer, Safety Processing, CA) |  | read again: range_listed, unchanged | [`0x9a526879…`](https://explorer-studio.genlayer.com/tx/0x9a526879f5200833e2392c852bbfbe22c51f8b9fa8b2ba77b6f0077aa05b5b78) |
 
 ## Every transaction
 

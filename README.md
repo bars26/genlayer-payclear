@@ -62,6 +62,10 @@ while one is running, a second audit of the same board within a week, a second f
 program before its last day. The contract's balance was reconciled with `totals()` at three points of the run, each time after every
 transfer had finalized.
 
+**From the live app with MetaMask:** a tester read `greenhouse/discord` in the wallet-free checker, opened an on-chain audit, ran the
+second step that finished it (41 postings: 35 in scope, 33 with Greenhouse's pay field and 2 with a range in the ad's text, score 100%),
+was paid 0.05 GEN for each step, and asked for a fresh reading of one posting ([wallet test](docs/REPRODUCTION.md#wallet-test-from-the-live-app)).
+
 ## Who can do what (and the attacks this blocks)
 
 | Rule | Why |
