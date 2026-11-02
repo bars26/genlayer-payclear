@@ -1,0 +1,10 @@
+{
+  "name": "PayClear",
+  "short_name": "PayClear",
+  "description": "Does the job ad show the pay? Job-board audits checked by GenLayer validators",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#EDF1F5",
+  "theme_color": "#EDF1F5",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

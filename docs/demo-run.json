@@ -1,0 +1,4502 @@
+{
+  "contract": "0x42E002dc4360752C37408F6755c6E0f94716dBfc",
+  "accounts": {
+    "sponsor": "0x3C8a9dD24Dd2c4A5386D99B0BCa7a239C828c206",
+    "cofunder": "0x04a8b6a6eB72977E15040564B70b497D68c881A4",
+    "auditor": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+    "bystander": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe"
+  },
+  "programs": [
+    "program_0"
+  ],
+  "program": {
+    "created_at": "2026-11-02T07:21:36",
+    "ends": "2027-01-01",
+    "funded_total": "3000000000000000000",
+    "history_json": "[{\"at\": \"2026-11-02T07:21:36\", \"event\": \"created\", \"amount\": \"2000000000000000000\"}, {\"at\": \"2026-11-02T07:21:43\", \"event\": \"funded\", \"amount\": \"1000000000000000000\"}, {\"at\": \"2026-11-02T07:22:20\", \"event\": \"audit_opened\", \"audit\": \"audit_0\", \"ats\": \"greenhouse\", \"board\": \"figma\"}, {\"at\": \"2026-11-02T07:25:29\", \"event\": \"audit_opened\", \"audit\": \"audit_1\", \"ats\": \"ashby\", \"board\": \"supabase\"}, {\"at\": \"2026-11-02T07:26:34\", \"event\": \"audit_opened\", \"audit\": \"audit_2\", \"ats\": \"ashby\", \"board\": \"linear\"}, {\"at\": \"2026-11-02T07:27:10\", \"event\": \"audit_opened\", \"audit\": \"audit_3\", \"ats\": \"greenhouse\", \"board\": \"airtable\"}, {\"at\": \"2026-11-02T07:27:30\", \"event\": \"audit_opened\", \"audit\": \"audit_4\", \"ats\": \"greenhouse\", \"board\": \"asana\"}]",
+    "id": "program_0",
+    "n_audits": 5,
+    "n_funders": 2,
+    "n_refunded": 0,
+    "n_steps": 17,
+    "paid_total": "850000000000000000",
+    "per_auditor": 40,
+    "pot": "2150000000000000000",
+    "returnable": 0,
+    "returned_total": 0,
+    "reward": "50000000000000000",
+    "sponsor": "0x3c8a9dd24dd2c4a5386d99b0bca7a239c828c206",
+    "state": "open",
+    "title": "US pay transparency, fall 2026"
+  },
+  "audits": {
+    "audit_0": {
+      "ats": "greenhouse",
+      "board": "figma",
+      "employer": "Figma",
+      "state": "done",
+      "board_size": "140",
+      "steps": [
+        {
+          "at": "2026-11-02T07:22:20",
+          "by": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+          "read": 25,
+          "packet": "28d027d9da7b79262e6523c55fc601aa1f645be724f612a41073f53d0e15a490",
+          "results": "6e6e81f8ab0db66f1621a2efc970f83ca8705bbceb06cd199ea807653daaa5f5",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:22:45",
+          "by": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+          "read": 25,
+          "packet": "ed21db91ecb954263ed638eb1f56b34b1d841bf66648b9548c57350d84b1b532",
+          "results": "f2a4769a3b658a7f18e7b8e056daa972ae4dc6fead5bf5356fac5c262940e4e2",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:23:18",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 25,
+          "packet": "e6b810f422fd7ccb6f921d0bf7620413af2b74bf1e9044fb5d29a39fb4df0e14",
+          "results": "351e4b2579c509911f3127c1370c9f8e4851d2088afda25dca9d41bb36590cc7",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:23:30",
+          "by": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+          "read": 25,
+          "packet": "c783dce4ebfbef0d38b8cb3411a61340f5755ce6a3e730e7e1833a309c14df46",
+          "results": "84023600452afd691740c7bc8b221361039da4ad7e6b0bafe5ddf63b1dd39f4d",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:23:42",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 25,
+          "packet": "5e123d481052becb48a69ca1a94882dd425056d33b41f196bc119e293d998d85",
+          "results": "4ff046da3f139a0d253c7184feff05328590ca55426eaf0ed39342ead8332b0f",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:23:59",
+          "by": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+          "read": 15,
+          "packet": "8ee3738bd0049f8763d870349bd8855ac67f69481230d6909eb11a58a3c18208",
+          "results": "1e532f84fc81a4f39ff3592e324ffbbd5550fe77328b1fe8af8b0dfb171a025b",
+          "paid": "50000000000000000"
+        }
+      ],
+      "score": {
+        "in_scope": 94,
+        "missing": 1,
+        "read": 140,
+        "score_bp": 9893,
+        "show_pay": 93,
+        "state": "done",
+        "unclear": 0,
+        "unverified": 0
+      },
+      "missing": [
+        {
+          "id": "6216211004",
+          "title": "Brand Designer, Web",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "url": "https://boards.greenhouse.io/figma/jobs/6216211004?gh_jid=6216211004"
+        }
+      ],
+      "results": [
+        {
+          "code": "out_of_scope",
+          "id": "5415515004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Mid-Market (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5415515004?gh_jid=5415515004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5426468004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "165,000-190,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Account Executive, Enterprise",
+          "url": "https://boards.greenhouse.io/figma/jobs/5426468004?gh_jid=5426468004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5458801004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Enterprise (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5458801004?gh_jid=5458801004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5551532004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - Machine Learning",
+          "url": "https://boards.greenhouse.io/figma/jobs/5551532004?gh_jid=5551532004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5551686004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - Data Infrastructure",
+          "url": "https://boards.greenhouse.io/figma/jobs/5551686004?gh_jid=5551686004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5551697004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - AI Product (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5551697004?gh_jid=5551697004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5551730004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - AI Product",
+          "url": "https://boards.greenhouse.io/figma/jobs/5551730004?gh_jid=5551730004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5552530004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - C++",
+          "url": "https://boards.greenhouse.io/figma/jobs/5552530004?gh_jid=5552530004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5552549004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - Distributed Systems",
+          "url": "https://boards.greenhouse.io/figma/jobs/5552549004?gh_jid=5552549004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5552560004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - Growth & Monetization",
+          "url": "https://boards.greenhouse.io/figma/jobs/5552560004?gh_jid=5552560004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5552580004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "140,000-348,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Data Scientist  ",
+          "url": "https://boards.greenhouse.io/figma/jobs/5552580004?gh_jid=5552580004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5558737004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "200,000-200,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Account Executive, Strategic",
+          "url": "https://boards.greenhouse.io/figma/jobs/5558737004?gh_jid=5558737004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5565447004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "82,500-82,500 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Senior Account Executive, SMB",
+          "url": "https://boards.greenhouse.io/figma/jobs/5565447004?gh_jid=5565447004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5565921004",
+          "location": "Paris, France",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Strategic (Paris, France) ",
+          "url": "https://boards.greenhouse.io/figma/jobs/5565921004?gh_jid=5565921004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5579204004",
+          "location": "Bengaluru, India",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Enterprise (Bengaluru, India)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5579204004?gh_jid=5579204004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5620034004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "155,500-230,500 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Manager, Strategic Sales",
+          "url": "https://boards.greenhouse.io/figma/jobs/5620034004?gh_jid=5620034004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5647851004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, SMB (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5647851004?gh_jid=5647851004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5651744004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-250,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Researcher, Figma Agentic Experiences",
+          "url": "https://boards.greenhouse.io/figma/jobs/5651744004?gh_jid=5651744004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5691886004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - AI Platforms",
+          "url": "https://boards.greenhouse.io/figma/jobs/5691886004?gh_jid=5691886004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5691911004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - Full Stack",
+          "url": "https://boards.greenhouse.io/figma/jobs/5691911004?gh_jid=5691911004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5694259004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "70,500-70,500 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Account Executive, SMB ",
+          "url": "https://boards.greenhouse.io/figma/jobs/5694259004?gh_jid=5694259004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5707966004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "AI Applied Scientist",
+          "url": "https://boards.greenhouse.io/figma/jobs/5707966004?gh_jid=5707966004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5711595004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-303,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Designer, Growth & Monetization",
+          "url": "https://boards.greenhouse.io/figma/jobs/5711595004?gh_jid=5711595004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5711913004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-303,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Designer, AI Models",
+          "url": "https://boards.greenhouse.io/figma/jobs/5711913004?gh_jid=5711913004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5722244004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - Billing",
+          "url": "https://boards.greenhouse.io/figma/jobs/5722244004?gh_jid=5722244004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5735853004",
+          "location": "Berlin, Germany",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Solutions Consultant (Berlin, Germany)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5735853004?gh_jid=5735853004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5753209004",
+          "location": "Singapore",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Enterprise, Mandarin Speaking (Singapore)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5753209004?gh_jid=5753209004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5783377004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "152,800-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Solutions Consultant",
+          "url": "https://boards.greenhouse.io/figma/jobs/5783377004?gh_jid=5783377004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5783812004",
+          "location": "Berlin, Germany",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Enterprise (Berlin, Germany)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5783812004?gh_jid=5783812004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5790627004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "185,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Software Engineer - Developer Experience",
+          "url": "https://boards.greenhouse.io/figma/jobs/5790627004?gh_jid=5790627004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5792631004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "115,000-245,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Strategic Finance",
+          "url": "https://boards.greenhouse.io/figma/jobs/5792631004?gh_jid=5792631004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5802956004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-245,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Support Engineer, AI Infrastructure & Tooling",
+          "url": "https://boards.greenhouse.io/figma/jobs/5802956004?gh_jid=5802956004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5806875004",
+          "location": "Tokyo, Japan",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Enterprise (Tokyo, Japan) ",
+          "url": "https://boards.greenhouse.io/figma/jobs/5806875004?gh_jid=5806875004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5807963004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - AI Observability",
+          "url": "https://boards.greenhouse.io/figma/jobs/5807963004?gh_jid=5807963004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5813967004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "140,000-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Distribution Partner Manager",
+          "url": "https://boards.greenhouse.io/figma/jobs/5813967004?gh_jid=5813967004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5822886004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Strategic (London, United Kingdom)  ",
+          "url": "https://boards.greenhouse.io/figma/jobs/5822886004?gh_jid=5822886004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5829751004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Security Engineer",
+          "url": "https://boards.greenhouse.io/figma/jobs/5829751004?gh_jid=5829751004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5844225004",
+          "location": "Paris, France",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Mid-Market (Paris, France)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5844225004?gh_jid=5844225004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5969046004",
+          "location": "San Francisco, CA",
+          "pay": "127,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA"
+          ],
+          "title": "Executive Assistant, People",
+          "url": "https://boards.greenhouse.io/figma/jobs/5969046004?gh_jid=5969046004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5985397004",
+          "location": "Berlin, Germany",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, SMB (Berlin, Germany)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5985397004?gh_jid=5985397004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5988684004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Account Executive, UK Government (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5988684004?gh_jid=5988684004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5989185004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-303,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Manager, AI Growth",
+          "url": "https://boards.greenhouse.io/figma/jobs/5989185004?gh_jid=5989185004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5993635004",
+          "location": "Sydney, Australia",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Solutions Consultant (Sydney, Australia)",
+          "url": "https://boards.greenhouse.io/figma/jobs/5993635004?gh_jid=5993635004"
+        },
+        {
+          "code": "range_listed",
+          "id": "5996930004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "155,500-230,500 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Enterprise Sales",
+          "url": "https://boards.greenhouse.io/figma/jobs/5996930004?gh_jid=5996930004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6008343004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "127,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Voice of the Customer Program Manager",
+          "url": "https://boards.greenhouse.io/figma/jobs/6008343004?gh_jid=6008343004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6008752004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - DevEx AI Tools",
+          "url": "https://boards.greenhouse.io/figma/jobs/6008752004?gh_jid=6008752004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6010279004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - Growth Platform ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6010279004?gh_jid=6010279004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6010992004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Manager, Inside Sales (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6010992004?gh_jid=6010992004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6020719004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "185,000-317,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Technical Program Manager - Infrastructure",
+          "url": "https://boards.greenhouse.io/figma/jobs/6020719004?gh_jid=6020719004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6073106004",
+          "location": "Tel Aviv, Israel",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - Figma Weave (Tel Aviv, Israel) ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6073106004?gh_jid=6073106004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6104028004",
+          "location": "São Paulo, Brazil",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Success Manager (São Paulo, Brazil)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6104028004?gh_jid=6104028004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6104919004",
+          "location": "New York, NY • United States",
+          "pay": "204,000-348,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Product Management - Roundtripping",
+          "url": "https://boards.greenhouse.io/figma/jobs/6104919004?gh_jid=6104919004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6105673004",
+          "location": "Tel Aviv, Israel",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Marketing Manager - Figma Weave (Tel Aviv, Israel) ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6105673004?gh_jid=6105673004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6110744004",
+          "location": "Berlin, Germany",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Manager, Mid-Market Sales (Berlin, Germany)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6110744004?gh_jid=6110744004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6111166004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "152,800-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Solutions Consultant, Payload",
+          "url": "https://boards.greenhouse.io/figma/jobs/6111166004?gh_jid=6111166004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6112961004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-245,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Strategic Finance, AI Innovation",
+          "url": "https://boards.greenhouse.io/figma/jobs/6112961004?gh_jid=6112961004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6117206004",
+          "location": "Sydney, Australia",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Mid-Market (Sydney, Australia)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6117206004?gh_jid=6117206004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6118332004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "185,000-317,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Distribution Partnerships",
+          "url": "https://boards.greenhouse.io/figma/jobs/6118332004?gh_jid=6118332004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6119781004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-303,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Manager, Acquisition",
+          "url": "https://boards.greenhouse.io/figma/jobs/6119781004?gh_jid=6119781004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6122269004",
+          "location": "Berlin, Germany",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Inside Sales Representative (Berlin, Germany) ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6122269004?gh_jid=6122269004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6124232004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Manager, Enterprise Sales (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6124232004?gh_jid=6124232004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6126976004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-303,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Designer, CMS",
+          "url": "https://boards.greenhouse.io/figma/jobs/6126976004?gh_jid=6126976004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6130865004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "290,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Director, Data Science",
+          "url": "https://boards.greenhouse.io/figma/jobs/6130865004?gh_jid=6130865004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6132643004",
+          "location": "Sydney, Australia • Melbourne, Australia",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Strategic (Sydney or Melbourne, Australia)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6132643004?gh_jid=6132643004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6135656004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "204,000-348,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Design - Systems & Infrastructure",
+          "url": "https://boards.greenhouse.io/figma/jobs/6135656004?gh_jid=6135656004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6138981004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - AI Infrastructure",
+          "url": "https://boards.greenhouse.io/figma/jobs/6138981004?gh_jid=6138981004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6143018004",
+          "location": "Berlin, Germany",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Director, Strategic Sales (Berlin, Germany)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6143018004?gh_jid=6143018004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6143238004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "55-55 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Software Engineer Intern (Summer 2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6143238004?gh_jid=6143238004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6144873004",
+          "location": "Tokyo, Japan",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Manager, Customer Enablement (Tokyo, Japan)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6144873004?gh_jid=6144873004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6149007004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Manager, Product Management - Roundtripping (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6149007004?gh_jid=6149007004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6150074004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "153,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Executive Communications Manager",
+          "url": "https://boards.greenhouse.io/figma/jobs/6150074004?gh_jid=6150074004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6150563004",
+          "location": "San Francisco, CA; San Francisco, CA • United States",
+          "pay": "235,000-317,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "US-REMOTE"
+          ],
+          "title": "Director, People Partners - Product, Design & Engineering",
+          "url": "https://boards.greenhouse.io/figma/jobs/6150563004?gh_jid=6150563004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6152695004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer Intern (London, United Kingdom) (Summer 2027) ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6152695004?gh_jid=6152695004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6158162004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Forward Deployed Engineer",
+          "url": "https://boards.greenhouse.io/figma/jobs/6158162004?gh_jid=6158162004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6160732004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "204,000-348,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Product Management - Figma Platform Experience",
+          "url": "https://boards.greenhouse.io/figma/jobs/6160732004?gh_jid=6160732004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6161021004",
+          "location": "Singapore",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Mid-Market, Mandarin Speaking (Singapore)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6161021004?gh_jid=6161021004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6163420004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Director, SMB Sales (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6163420004?gh_jid=6163420004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6166608004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "102,000-139,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, SMB Sales",
+          "url": "https://boards.greenhouse.io/figma/jobs/6166608004?gh_jid=6166608004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6173031004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "127,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Immigration Program Manager",
+          "url": "https://boards.greenhouse.io/figma/jobs/6173031004?gh_jid=6173031004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6174190004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "26-26 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Early Career, Inside Sales Representative (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6174190004?gh_jid=6174190004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6178851004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "46-46 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Data Engineer Intern (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6178851004?gh_jid=6178851004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6178857004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "46-46 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Data Science Intern (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6178857004?gh_jid=6178857004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6180005004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "46-46 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Product Design Intern (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6180005004?gh_jid=6180005004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6180053004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "140,000-140,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Early Career, Product Designer (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6180053004?gh_jid=6180053004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6180172004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "140,000-348,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Security Scientist",
+          "url": "https://boards.greenhouse.io/figma/jobs/6180172004?gh_jid=6180172004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6181922004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "140,000-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Field Engineer",
+          "url": "https://boards.greenhouse.io/figma/jobs/6181922004?gh_jid=6181922004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6186265004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Manager, Mid-Market Sales (London, United Kingdom) ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6186265004?gh_jid=6186265004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6187903004",
+          "location": "Paris, France",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Inside Sales Representative (Paris, France)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6187903004?gh_jid=6187903004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6189444004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Manager, Technical Support (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6189444004?gh_jid=6189444004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6191697004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-245,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Recruiting - Sales",
+          "url": "https://boards.greenhouse.io/figma/jobs/6191697004?gh_jid=6191697004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6193686004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Designer, Roundtripping (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6193686004?gh_jid=6193686004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6199185004",
+          "location": "San Francisco, CA",
+          "pay": "127,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA"
+          ],
+          "title": "Executive Assistant, Growth Marketing",
+          "url": "https://boards.greenhouse.io/figma/jobs/6199185004?gh_jid=6199185004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6200626004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "68-68 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "PhD Intern, Data Science (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6200626004?gh_jid=6200626004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6201114004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "290,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Director, Product Design - AI & Context",
+          "url": "https://boards.greenhouse.io/figma/jobs/6201114004?gh_jid=6201114004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6201385004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "140,000-202,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "HRIS Analyst",
+          "url": "https://boards.greenhouse.io/figma/jobs/6201385004?gh_jid=6201385004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6201407004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Data Platform Engineer",
+          "url": "https://boards.greenhouse.io/figma/jobs/6201407004?gh_jid=6201407004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6203089004",
+          "location": "Berlin, Germany",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Designer Advocate (Berlin, Germany)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6203089004?gh_jid=6203089004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6204360004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-250,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Researcher - Rapid Research",
+          "url": "https://boards.greenhouse.io/figma/jobs/6204360004?gh_jid=6204360004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6204556004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Video Strategist",
+          "url": "https://boards.greenhouse.io/figma/jobs/6204556004?gh_jid=6204556004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6207801004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "74-74 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "PhD Intern, AI Applied Scientist (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6207801004?gh_jid=6207801004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6207950004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-221,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Content Strategist, Product",
+          "url": "https://boards.greenhouse.io/figma/jobs/6207950004?gh_jid=6207950004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6208862004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "153,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "Corporate Communications Manager",
+          "url": "https://boards.greenhouse.io/figma/jobs/6208862004?gh_jid=6208862004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6208999004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "185,000-317,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Tech & Ecosystem Partnerships",
+          "url": "https://boards.greenhouse.io/figma/jobs/6208999004?gh_jid=6208999004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6211088004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "235,000-317,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Director, Governance Risk & Compliance",
+          "url": "https://boards.greenhouse.io/figma/jobs/6211088004?gh_jid=6211088004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6211119004",
+          "location": "São Paulo, Brazil",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Strategic (São Paulo, Brazil)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6211119004?gh_jid=6211119004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6211910004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-245,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Technical Program Manager - AI Tooling",
+          "url": "https://boards.greenhouse.io/figma/jobs/6211910004?gh_jid=6211910004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6212642004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-250,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Researcher, Figma Design",
+          "url": "https://boards.greenhouse.io/figma/jobs/6212642004?gh_jid=6212642004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6215865004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "105,000-245,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Business Systems Analyst",
+          "url": "https://boards.greenhouse.io/figma/jobs/6215865004?gh_jid=6215865004"
+        },
+        {
+          "before": "no_range",
+          "code": "no_range",
+          "id": "6216211004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "rechecked": true,
+          "snippets_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Brand Designer, Web",
+          "url": "https://boards.greenhouse.io/figma/jobs/6216211004?gh_jid=6216211004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6217137004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "50-73 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Senior Order Management Analyst ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6217137004?gh_jid=6217137004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6219995004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "74-74 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "PhD Intern, Software Engineer - Graphics (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6219995004?gh_jid=6219995004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6222861004",
+          "location": "Bengaluru, India",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Community Support Specialist (Bengaluru, India)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6222861004?gh_jid=6222861004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6223155004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Compliance Engineer",
+          "url": "https://boards.greenhouse.io/figma/jobs/6223155004?gh_jid=6223155004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6223657004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - Production Engineering",
+          "url": "https://boards.greenhouse.io/figma/jobs/6223657004?gh_jid=6223657004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6223693004",
+          "location": "New York, NY • United States",
+          "pay": "185,600-316,800 USD",
+          "snippets_sha256": "",
+          "states": [
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Solutions Consulting",
+          "url": "https://boards.greenhouse.io/figma/jobs/6223693004?gh_jid=6223693004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6223879004",
+          "location": "Bengaluru, India",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Support Specialist (Bengaluru, India)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6223879004?gh_jid=6223879004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6224661004",
+          "location": "New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - External Platform",
+          "url": "https://boards.greenhouse.io/figma/jobs/6224661004?gh_jid=6224661004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6225172004",
+          "location": "Seoul, South Korea",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Solutions Consultant (Seoul, South Korea)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6225172004?gh_jid=6225172004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6225818004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "140,000-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Distribution Partner Manager, LATAM",
+          "url": "https://boards.greenhouse.io/figma/jobs/6225818004?gh_jid=6225818004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6226427004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Manager, Recruiting (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6226427004?gh_jid=6226427004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6227402004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-250,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Builder, AI Insights",
+          "url": "https://boards.greenhouse.io/figma/jobs/6227402004?gh_jid=6227402004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6228774004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-303,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Manager, Figma Pattern Library ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6228774004?gh_jid=6228774004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6229275004",
+          "location": "Bengaluru, India",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Enterprise Support Specialist (Bengaluru, India)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6229275004?gh_jid=6229275004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6230952004",
+          "location": "San Francisco, CA",
+          "pay": "165,000-190,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA"
+          ],
+          "title": "Account Executive, Public Sector - State & Local",
+          "url": "https://boards.greenhouse.io/figma/jobs/6230952004?gh_jid=6230952004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6231027004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "169,000-303,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Designer, Core Experience",
+          "url": "https://boards.greenhouse.io/figma/jobs/6231027004?gh_jid=6231027004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6231832004",
+          "location": "Tokyo, Japan",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Onboarding Manager, Customer Experience (Tokyo, Japan)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6231832004?gh_jid=6231832004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6231956004",
+          "location": "São Paulo, Brazil",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Enterprise (São Paulo, Brazil)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6231956004?gh_jid=6231956004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6232410004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "140,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Business Systems Architect",
+          "url": "https://boards.greenhouse.io/figma/jobs/6232410004?gh_jid=6232410004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6232422004",
+          "location": "New York, NY",
+          "pay": "153,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "NY"
+          ],
+          "title": "Manager, Customer Enablement - Figma Weave (New York, United States)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6232422004?gh_jid=6232422004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6232541004",
+          "location": "New York, NY • United States",
+          "pay": "127,000-269,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Customer Success Manager - Figma Weave (New York, United States)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6232541004?gh_jid=6232541004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6232584004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Success Manager - Figma Weave  (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6232584004?gh_jid=6232584004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6233040004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Data & Integration Engineer, Business Systems",
+          "url": "https://boards.greenhouse.io/figma/jobs/6233040004?gh_jid=6233040004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6233043004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "153,000-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "AI Engineer, Internal Tools",
+          "url": "https://boards.greenhouse.io/figma/jobs/6233043004?gh_jid=6233043004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6233207004",
+          "location": "Singapore",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Technical Quality Specialist - Figma Weave (Singapore) ",
+          "url": "https://boards.greenhouse.io/figma/jobs/6233207004?gh_jid=6233207004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6235005004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "115,000-245,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Product Partner Manager, Scaled",
+          "url": "https://boards.greenhouse.io/figma/jobs/6235005004?gh_jid=6235005004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6235282004",
+          "location": "New York, NY; San Francisco, CA • New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - Design Systems Adherence",
+          "url": "https://boards.greenhouse.io/figma/jobs/6235282004?gh_jid=6235282004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6235320004",
+          "location": "New York, NY • United States",
+          "pay": "140,000-296,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Sales Operations Manager",
+          "url": "https://boards.greenhouse.io/figma/jobs/6235320004?gh_jid=6235320004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6237757004",
+          "location": "San Francisco, CA • New York, NY • United States",
+          "pay": "258,000-376,000 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Manager, Software Engineering - UX Platform",
+          "url": "https://boards.greenhouse.io/figma/jobs/6237757004?gh_jid=6237757004"
+        },
+        {
+          "code": "range_listed",
+          "id": "6238015004",
+          "location": "San Francisco, CA • New York, NY",
+          "pay": "74-74 USD",
+          "snippets_sha256": "",
+          "states": [
+            "CA",
+            "NY"
+          ],
+          "title": "PhD Intern, Security Engineer (2027)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6238015004?gh_jid=6238015004"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6238252004",
+          "location": "London, England",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Sales Recruiter (London, United Kingdom)",
+          "url": "https://boards.greenhouse.io/figma/jobs/6238252004?gh_jid=6238252004"
+        }
+      ]
+    },
+    "audit_1": {
+      "ats": "ashby",
+      "board": "supabase",
+      "employer": "supabase",
+      "state": "done",
+      "board_size": "68",
+      "steps": [
+        {
+          "at": "2026-11-02T07:25:29",
+          "by": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+          "read": 25,
+          "packet": "a7daf831fcfa7c30150a8b9e76dbec9f980fc9fa41597b307a08709c84420049",
+          "results": "032cd0e2f26e52b0388835881b27a8a649cfe837bc46d05fc829cd17ed346b4a",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:25:53",
+          "by": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+          "read": 25,
+          "packet": "4a324134445b7523e26913aeb7f7f321e2ad6ae1a2362dc6ed4a3a6ad12fd627",
+          "results": "0d704b735a14e0aba28c56b75741f167e8a1cc6dfb9a0b91c7135d11e211cf0d",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:26:15",
+          "by": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+          "read": 18,
+          "packet": "0828e4a43b24ecf0ff4503119e299b83c3cd2efc42554cf096f7f6ecfa2250ac",
+          "results": "e33377546999050ad3711707740d6dd5e2941ba779cce8de0a655af64a2f6282",
+          "paid": "50000000000000000"
+        }
+      ],
+      "score": {
+        "in_scope": 5,
+        "missing": 4,
+        "read": 68,
+        "score_bp": 2000,
+        "show_pay": 1,
+        "state": "done",
+        "unclear": 0,
+        "unverified": 0
+      },
+      "missing": [
+        {
+          "id": "05226c15-0501-4559-833d-3815fdf01f56",
+          "title": "Video Producer (San Francisco, CA)",
+          "location": "Remote, San Francisco, CA",
+          "url": "https://jobs.ashbyhq.com/supabase/05226c15-0501-4559-833d-3815fdf01f56"
+        },
+        {
+          "id": "98ae5c78-eab7-4879-b143-96b98e4d0dbb",
+          "title": "Developer Relations Engineer (New York, NY)",
+          "location": "Remote, New York, US",
+          "url": "https://jobs.ashbyhq.com/supabase/98ae5c78-eab7-4879-b143-96b98e4d0dbb"
+        },
+        {
+          "id": "a1320bbf-bfae-49a8-a1b7-12eeccaf39ca",
+          "title": "Developer Relations Engineer ",
+          "location": "Remote, San Francisco, CA",
+          "url": "https://jobs.ashbyhq.com/supabase/a1320bbf-bfae-49a8-a1b7-12eeccaf39ca"
+        },
+        {
+          "id": "cb04ae3a-3a47-4e21-928f-c2456b7b214e",
+          "title": "Member of Technical Staff",
+          "location": "Remote, Bay Area, CA / Remote, San Francisco, CA / Remote, AMER",
+          "url": "https://jobs.ashbyhq.com/supabase/cb04ae3a-3a47-4e21-928f-c2456b7b214e"
+        }
+      ],
+      "results": [
+        {
+          "code": "no_range",
+          "id": "05226c15-0501-4559-833d-3815fdf01f56",
+          "location": "Remote, San Francisco, CA",
+          "snippets_sha256": "d23f2efd6274fb6076368e9431ff9eaf135491058e423a3d68dac1d896e3d2d0",
+          "states": [
+            "CA",
+            "US-REMOTE"
+          ],
+          "title": "Video Producer (San Francisco, CA)",
+          "url": "https://jobs.ashbyhq.com/supabase/05226c15-0501-4559-833d-3815fdf01f56"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "06752423-eebb-472c-95b5-c7ff2559fd60",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - Branching",
+          "url": "https://jobs.ashbyhq.com/supabase/06752423-eebb-472c-95b5-c7ff2559fd60"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "11beb619-0c25-4b11-9818-3f18e278c65b",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Performance Engineer - Benchmarking",
+          "url": "https://jobs.ashbyhq.com/supabase/11beb619-0c25-4b11-9818-3f18e278c65b"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "13478d3f-0093-458f-9f84-af71e66db03f",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "GRC Analyst ",
+          "url": "https://jobs.ashbyhq.com/supabase/13478d3f-0093-458f-9f84-af71e66db03f"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "142135ae-a15f-4ec7-90bb-cb4e7968bc09",
+          "location": "Remote, APAC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Support Engineer (APAC)",
+          "url": "https://jobs.ashbyhq.com/supabase/142135ae-a15f-4ec7-90bb-cb4e7968bc09"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "1acade7a-0b80-4c6c-9253-7c27a165739d",
+          "location": "Remote, London UK",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Developer Relations Engineer (London, UK)",
+          "url": "https://jobs.ashbyhq.com/supabase/1acade7a-0b80-4c6c-9253-7c27a165739d"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "282d1dfb-b162-4ce4-a938-c4b2173230e0",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Partner Solutions Architect , AI Builder ",
+          "url": "https://jobs.ashbyhq.com/supabase/282d1dfb-b162-4ce4-a938-c4b2173230e0"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "2e718684-4f75-4a99-8d6b-3b6bd44e4228",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Multigres Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/2e718684-4f75-4a99-8d6b-3b6bd44e4228"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "344787f2-d115-4056-87ca-7668fc14be3d",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "AWS Gaming GTM Segment Lead",
+          "url": "https://jobs.ashbyhq.com/supabase/344787f2-d115-4056-87ca-7668fc14be3d"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "3889002e-536e-4046-a330-70e942b0cc96",
+          "location": "Remote, EMEA",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Database Support Engineer (EMEA)",
+          "url": "https://jobs.ashbyhq.com/supabase/3889002e-536e-4046-a330-70e942b0cc96"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "3ab0b926-c9b5-4197-aff2-88d5bf009e13",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - Functions (Compute)",
+          "url": "https://jobs.ashbyhq.com/supabase/3ab0b926-c9b5-4197-aff2-88d5bf009e13"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "3b5d54ca-741b-45ac-bd3f-31605a0d3541",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "AI Platform Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/3b5d54ca-741b-45ac-bd3f-31605a0d3541"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "47bcfdb8-b954-423e-8a9e-85256434575c",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Lead - Infrastructure",
+          "url": "https://jobs.ashbyhq.com/supabase/47bcfdb8-b954-423e-8a9e-85256434575c"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "4857bb69-da99-4027-87f1-a6a4d03699b3",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Support Engineer (APAC - Weekends)",
+          "url": "https://jobs.ashbyhq.com/supabase/4857bb69-da99-4027-87f1-a6a4d03699b3"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "48950725-e0d9-4025-92d9-f75e1b60ce45",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Postgres Deployment Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/48950725-e0d9-4025-92d9-f75e1b60ce45"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "4eb14408-51e6-4c58-812a-3782d5c0b045",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Platform Engineer - Compute Capacity",
+          "url": "https://jobs.ashbyhq.com/supabase/4eb14408-51e6-4c58-812a-3782d5c0b045"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "59083a14-b2b6-4dd8-8037-739aa1ad1e22",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Data Analyst - Marketing",
+          "url": "https://jobs.ashbyhq.com/supabase/59083a14-b2b6-4dd8-8037-739aa1ad1e22"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "590a0742-97f1-47f4-81a2-567efc939ae2",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Support Engineer (EMEA - Weekends)",
+          "url": "https://jobs.ashbyhq.com/supabase/590a0742-97f1-47f4-81a2-567efc939ae2"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5d09daeb-2d7e-42de-9151-81a1341195c4",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Cloud Platform Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/5d09daeb-2d7e-42de-9151-81a1341195c4"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "621516b5-4d8f-4ee9-8287-2da12e63d023",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "OrioleDB Developer (AMER)",
+          "url": "https://jobs.ashbyhq.com/supabase/621516b5-4d8f-4ee9-8287-2da12e63d023"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "62945518-2468-4cf5-9f36-904b60f75183",
+          "location": "Remote, APAC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Database Support Engineer (APAC)",
+          "url": "https://jobs.ashbyhq.com/supabase/62945518-2468-4cf5-9f36-904b60f75183"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "62dfb104-ae18-46ce-a9ef-836f024c3d6d",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Head of New Media",
+          "url": "https://jobs.ashbyhq.com/supabase/62dfb104-ae18-46ce-a9ef-836f024c3d6d"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "66bab062-b769-43cf-ac3c-a2630257624c",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Solution Architect, Team Lead ",
+          "url": "https://jobs.ashbyhq.com/supabase/66bab062-b769-43cf-ac3c-a2630257624c"
+        },
+        {
+          "code": "range_listed",
+          "id": "68a397e7-8a1a-4566-ae41-e8c61dd6ed93",
+          "location": "Remote, Bay Area, CA",
+          "pay": "$200K - $270K",
+          "snippets_sha256": "",
+          "states": [
+            "CA"
+          ],
+          "title": "Product Manager - Strategic Partner Integrations (regular travel to Bay Area)",
+          "url": "https://jobs.ashbyhq.com/supabase/68a397e7-8a1a-4566-ae41-e8c61dd6ed93"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6b314e83-6617-49fc-8c73-021ebae9a757",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Platform Engineer - Compute",
+          "url": "https://jobs.ashbyhq.com/supabase/6b314e83-6617-49fc-8c73-021ebae9a757"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6c9de03c-e289-4612-9045-492985d0274b",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Platform Engineer, Edge & Networking",
+          "url": "https://jobs.ashbyhq.com/supabase/6c9de03c-e289-4612-9045-492985d0274b"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6f7656fc-9983-48be-bbd3-8b40e0e3027a",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Container Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/6f7656fc-9983-48be-bbd3-8b40e0e3027a"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "73ddf93b-fe0c-455d-ba27-cdde0d3fb94f",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "FinOps Data Engineer ",
+          "url": "https://jobs.ashbyhq.com/supabase/73ddf93b-fe0c-455d-ba27-cdde0d3fb94f"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7c5eb3fc-1087-4c1c-b3a2-a19fe01dd259",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - Turso",
+          "url": "https://jobs.ashbyhq.com/supabase/7c5eb3fc-1087-4c1c-b3a2-a19fe01dd259"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "85f4d148-4602-4139-802a-962705133892",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Manager - Spark",
+          "url": "https://jobs.ashbyhq.com/supabase/85f4d148-4602-4139-802a-962705133892"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8e4ddc16-6308-432a-acea-55709c15ddc7",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "AWS Partner Marketing Manager",
+          "url": "https://jobs.ashbyhq.com/supabase/8e4ddc16-6308-432a-acea-55709c15ddc7"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8fa1c7a0-a85c-4562-a1f5-4dd22cadae27",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Platform Security Engineer (AMER/APAC)",
+          "url": "https://jobs.ashbyhq.com/supabase/8fa1c7a0-a85c-4562-a1f5-4dd22cadae27"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "9073c0cd-2545-473a-b2ac-63e4615c69b5",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Platform Engineer, Managed Postgres",
+          "url": "https://jobs.ashbyhq.com/supabase/9073c0cd-2545-473a-b2ac-63e4615c69b5"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "950e8ffc-79a5-4626-b1dd-115fcbcddad0",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Data API Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/950e8ffc-79a5-4626-b1dd-115fcbcddad0"
+        },
+        {
+          "code": "no_range",
+          "id": "98ae5c78-eab7-4879-b143-96b98e4d0dbb",
+          "location": "Remote, New York, US",
+          "snippets_sha256": "d23f2efd6274fb6076368e9431ff9eaf135491058e423a3d68dac1d896e3d2d0",
+          "states": [
+            "NY",
+            "US-REMOTE"
+          ],
+          "title": "Developer Relations Engineer (New York, NY)",
+          "url": "https://jobs.ashbyhq.com/supabase/98ae5c78-eab7-4879-b143-96b98e4d0dbb"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "98ef6a11-9898-4960-9931-1264285849f3",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Performance Engineer - Performance Analysis & Tuning",
+          "url": "https://jobs.ashbyhq.com/supabase/98ef6a11-9898-4960-9931-1264285849f3"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "99a80436-89ec-412b-b782-1dd462bd16dc",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Engineering Manager",
+          "url": "https://jobs.ashbyhq.com/supabase/99a80436-89ec-412b-b782-1dd462bd16dc"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "9a4c9984-07c7-4b47-982f-371de3f6ff50",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Manager - Auth",
+          "url": "https://jobs.ashbyhq.com/supabase/9a4c9984-07c7-4b47-982f-371de3f6ff50"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "9c04bc60-78a1-4529-950d-4704ab475764",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Head of AI Native Operations",
+          "url": "https://jobs.ashbyhq.com/supabase/9c04bc60-78a1-4529-950d-4704ab475764"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "9f2ba0b2-6d3b-43ea-990f-5b4bf3930520",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - Storage",
+          "url": "https://jobs.ashbyhq.com/supabase/9f2ba0b2-6d3b-43ea-990f-5b4bf3930520"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "a069c886-1107-408e-88b4-e1aa8d33d4bc",
+          "location": "Remote, EMEA / Europe",
+          "snippets_sha256": "",
+          "states": [],
+          "title": " Account Executive DACH (German-Speaking)",
+          "url": "https://jobs.ashbyhq.com/supabase/a069c886-1107-408e-88b4-e1aa8d33d4bc"
+        },
+        {
+          "code": "no_range",
+          "id": "a1320bbf-bfae-49a8-a1b7-12eeccaf39ca",
+          "location": "Remote, San Francisco, CA",
+          "snippets_sha256": "d23f2efd6274fb6076368e9431ff9eaf135491058e423a3d68dac1d896e3d2d0",
+          "states": [
+            "CA",
+            "US-REMOTE"
+          ],
+          "title": "Developer Relations Engineer ",
+          "url": "https://jobs.ashbyhq.com/supabase/a1320bbf-bfae-49a8-a1b7-12eeccaf39ca"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "ab8d1463-bc97-417f-97b1-bfc1fe619b3e",
+          "location": "Remote, APAC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Database Support Engineer (Japanese Speaking)",
+          "url": "https://jobs.ashbyhq.com/supabase/ab8d1463-bc97-417f-97b1-bfc1fe619b3e"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "b4a2f5e5-5c51-4c1a-abde-a89de27451c7",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Engineering Manager, Billing",
+          "url": "https://jobs.ashbyhq.com/supabase/b4a2f5e5-5c51-4c1a-abde-a89de27451c7"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "b566fbf8-2894-4314-9533-8fa920e80c19",
+          "location": "Remote, APAC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Executive Assistant to the CEO",
+          "url": "https://jobs.ashbyhq.com/supabase/b566fbf8-2894-4314-9533-8fa920e80c19"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "b65287c7-2071-4bc6-8717-58c090e2a372",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "SDK Engineer - Python",
+          "url": "https://jobs.ashbyhq.com/supabase/b65287c7-2071-4bc6-8717-58c090e2a372"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "b75ba81e-54cc-4393-a575-bc41776b0113",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - Spark",
+          "url": "https://jobs.ashbyhq.com/supabase/b75ba81e-54cc-4393-a575-bc41776b0113"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "bd5ce178-84c9-469e-89f4-493c21b50622",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Manager - Realtime",
+          "url": "https://jobs.ashbyhq.com/supabase/bd5ce178-84c9-469e-89f4-493c21b50622"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "c01f7436-1fdd-4a3e-8b96-8cadc33b006e",
+          "location": "Remote, EMEA",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Support Engineer (EMEA)",
+          "url": "https://jobs.ashbyhq.com/supabase/c01f7436-1fdd-4a3e-8b96-8cadc33b006e"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "c16bd707-29f2-46fb-8409-7270ff00978b",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Postgres Engineer (AMER)",
+          "url": "https://jobs.ashbyhq.com/supabase/c16bd707-29f2-46fb-8409-7270ff00978b"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "c20228c2-45ff-4b77-ab77-906f39a06ca3",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Manager -  Administration & Governance",
+          "url": "https://jobs.ashbyhq.com/supabase/c20228c2-45ff-4b77-ab77-906f39a06ca3"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "c6d89ec0-76ee-4de7-92d0-2e0262e9e025",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Engineering Manager - Spark",
+          "url": "https://jobs.ashbyhq.com/supabase/c6d89ec0-76ee-4de7-92d0-2e0262e9e025"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "c9f78e74-fb9d-4cd0-af0b-b1cec4632331",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "OrioleDB Deployment Engineer (AMER)",
+          "url": "https://jobs.ashbyhq.com/supabase/c9f78e74-fb9d-4cd0-af0b-b1cec4632331"
+        },
+        {
+          "code": "no_range",
+          "id": "cb04ae3a-3a47-4e21-928f-c2456b7b214e",
+          "location": "Remote, Bay Area, CA / Remote, San Francisco, CA / Remote, AMER",
+          "snippets_sha256": "d23f2efd6274fb6076368e9431ff9eaf135491058e423a3d68dac1d896e3d2d0",
+          "states": [
+            "CA",
+            "US-REMOTE"
+          ],
+          "title": "Member of Technical Staff",
+          "url": "https://jobs.ashbyhq.com/supabase/cb04ae3a-3a47-4e21-928f-c2456b7b214e"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "d5573afa-636c-4219-832f-386f498243bf",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Solution Architect (AMER)",
+          "url": "https://jobs.ashbyhq.com/supabase/d5573afa-636c-4219-832f-386f498243bf"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "d6af503b-acc4-40c9-83d8-d4fe0dcc2dd5",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Growth Marketer, Creators & Channels",
+          "url": "https://jobs.ashbyhq.com/supabase/d6af503b-acc4-40c9-83d8-d4fe0dcc2dd5"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "dca463e6-b6d0-4003-a30b-e0970a8dcee2",
+          "location": "Remote, APAC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Solution Architect (AU, NZ, SG)",
+          "url": "https://jobs.ashbyhq.com/supabase/dca463e6-b6d0-4003-a30b-e0970a8dcee2"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "dcf09dfe-55bc-44ba-b5db-1a2de7f33216",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Support Engineer (AMER - Weekends)",
+          "url": "https://jobs.ashbyhq.com/supabase/dcf09dfe-55bc-44ba-b5db-1a2de7f33216"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "e4e3ccb7-7b7d-42a2-be0f-26cbb5ae4abd",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Support Engineer (AMER)",
+          "url": "https://jobs.ashbyhq.com/supabase/e4e3ccb7-7b7d-42a2-be0f-26cbb5ae4abd"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "e569b7f7-fa8f-4139-86f6-4f52b456882d",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - Auth",
+          "url": "https://jobs.ashbyhq.com/supabase/e569b7f7-fa8f-4139-86f6-4f52b456882d"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "ed6cedb1-b9bf-4609-ac5c-c75c33b31bf3",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Site Reliability Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/ed6cedb1-b9bf-4609-ac5c-c75c33b31bf3"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "f035bda1-b5d3-4c5b-8736-b9c335fe1c3b",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Multigres Deployment Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/f035bda1-b5d3-4c5b-8736-b9c335fe1c3b"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "f0f277ac-b96c-478a-81ca-7bd80612533f",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Partnerships Manager, Ecosystem",
+          "url": "https://jobs.ashbyhq.com/supabase/f0f277ac-b96c-478a-81ca-7bd80612533f"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "f18b1173-51c3-4ff6-bcda-89f8111931f4",
+          "location": "Remote, AMER",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Database Support Engineer (AMER)",
+          "url": "https://jobs.ashbyhq.com/supabase/f18b1173-51c3-4ff6-bcda-89f8111931f4"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "f52fd120-5fbe-4e0d-949d-01e217ec77d6",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Technical Account Management (TAM) Leader",
+          "url": "https://jobs.ashbyhq.com/supabase/f52fd120-5fbe-4e0d-949d-01e217ec77d6"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "f6035bf8-4f44-4425-9944-d5509a3c8652",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Release Engineer",
+          "url": "https://jobs.ashbyhq.com/supabase/f6035bf8-4f44-4425-9944-d5509a3c8652"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "fab1525f-3d89-4d1c-9094-84d21647415e",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "FinOps Engineer ",
+          "url": "https://jobs.ashbyhq.com/supabase/fab1525f-3d89-4d1c-9094-84d21647415e"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "fb0b563a-e541-43fd-8555-9eb6473aaa11",
+          "location": "Remote, Global",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer - AI Tooling Infrastructure",
+          "url": "https://jobs.ashbyhq.com/supabase/fb0b563a-e541-43fd-8555-9eb6473aaa11"
+        }
+      ]
+    },
+    "audit_2": {
+      "ats": "ashby",
+      "board": "linear",
+      "employer": "linear",
+      "state": "done",
+      "board_size": "31",
+      "steps": [
+        {
+          "at": "2026-11-02T07:26:34",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 25,
+          "packet": "f7a90dc34da1bdee591c99be64f4a305ba6f56ba67501bddcf197e1846aec624",
+          "results": "8d89f483e29ffa0ab1dafa03f6fda684ed4fb3d13d71b908170b91372943e6a2",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:26:52",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 6,
+          "packet": "ca3529010fe105b3eaac0d22ff6ad3bb55a5553881be9e5c4b19f2a74a593fbe",
+          "results": "744e31d99929aa94fea338f816e60488bcb0204b16021260fd82a2e0dd413d79",
+          "paid": "50000000000000000"
+        }
+      ],
+      "score": {
+        "in_scope": 17,
+        "missing": 17,
+        "read": 31,
+        "score_bp": 0,
+        "show_pay": 0,
+        "state": "done",
+        "unclear": 0,
+        "unverified": 0
+      },
+      "missing": [
+        {
+          "id": "0c7c2e26-0a98-42cf-a47c-9a3999fb513b",
+          "title": "Product Engineer",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/0c7c2e26-0a98-42cf-a47c-9a3999fb513b"
+        },
+        {
+          "id": "12f8f208-0b9c-4569-bb3d-41c8a197029e",
+          "title": "Senior / Staff Product Engineer",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/12f8f208-0b9c-4569-bb3d-41c8a197029e"
+        },
+        {
+          "id": "1aa6f672-5917-49aa-b015-70ebff901923",
+          "title": "Deal Desk",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/1aa6f672-5917-49aa-b015-70ebff901923"
+        },
+        {
+          "id": "1d652292-04d9-405c-8101-578efd020e94",
+          "title": "Developer Relations",
+          "location": "North America / Europe",
+          "url": "https://jobs.ashbyhq.com/linear/1d652292-04d9-405c-8101-578efd020e94"
+        },
+        {
+          "id": "493579ff-3198-420f-ab6a-b8bb971cb513",
+          "title": "Senior / Staff Security Engineer",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/493579ff-3198-420f-ab6a-b8bb971cb513"
+        },
+        {
+          "id": "4c4f5bf5-0628-4145-b211-eb533edab8d1",
+          "title": "Field Marketing Manager",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/4c4f5bf5-0628-4145-b211-eb533edab8d1"
+        },
+        {
+          "id": "a264869e-f058-487c-ab7f-9b77dffa427c",
+          "title": "Senior / Staff Product Designer",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/a264869e-f058-487c-ab7f-9b77dffa427c"
+        },
+        {
+          "id": "b32de590-06ce-47d4-8994-66b936df908d",
+          "title": "Production Designer",
+          "location": "North America / Europe",
+          "url": "https://jobs.ashbyhq.com/linear/b32de590-06ce-47d4-8994-66b936df908d"
+        },
+        {
+          "id": "b4a7764e-c680-4bdf-9956-dc78f2ca94d5",
+          "title": "Senior / Staff Product Engineer, Applied AI",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/b4a7764e-c680-4bdf-9956-dc78f2ca94d5"
+        },
+        {
+          "id": "b7669c4b-eeca-421d-ba9a-d90203f6fcb2",
+          "title": "Product Manager",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/b7669c4b-eeca-421d-ba9a-d90203f6fcb2"
+        },
+        {
+          "id": "c0abc97e-b4d7-4ad7-bd13-bc40f4023227",
+          "title": "Product Marketing Manager",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/c0abc97e-b4d7-4ad7-bd13-bc40f4023227"
+        },
+        {
+          "id": "c21af93e-210f-4969-8eaa-90fb16a5b720",
+          "title": "Account Executive, Startups",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/c21af93e-210f-4969-8eaa-90fb16a5b720"
+        },
+        {
+          "id": "cd5ae036-0223-427a-b038-ba16ef9dcb32",
+          "title": "Senior / Staff Fullstack Engineer",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/cd5ae036-0223-427a-b038-ba16ef9dcb32"
+        },
+        {
+          "id": "d062065e-05bb-42ce-a430-ec205695cc2e",
+          "title": "Product Support Specialist, Pacific/Mountain Time",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/d062065e-05bb-42ce-a430-ec205695cc2e"
+        },
+        {
+          "id": "eac7f181-d658-4943-9430-51bae2bcd110",
+          "title": "Mobile Product Designer",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/eac7f181-d658-4943-9430-51bae2bcd110"
+        },
+        {
+          "id": "f16dd5e9-ed10-4b8e-b5d7-1b8b5e3f002f",
+          "title": "Creative Producer",
+          "location": "North America / Europe",
+          "url": "https://jobs.ashbyhq.com/linear/f16dd5e9-ed10-4b8e-b5d7-1b8b5e3f002f"
+        },
+        {
+          "id": "f272fc4a-91a7-4dcf-9cb5-3600ebaf14e1",
+          "title": "Analytics Engineer",
+          "location": "North America",
+          "url": "https://jobs.ashbyhq.com/linear/f272fc4a-91a7-4dcf-9cb5-3600ebaf14e1"
+        }
+      ],
+      "results": [
+        {
+          "code": "out_of_scope",
+          "id": "069c4628-88d7-4e4d-b393-c996fc7f3076",
+          "location": "Europe",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior / Staff Product Engineer",
+          "url": "https://jobs.ashbyhq.com/linear/069c4628-88d7-4e4d-b393-c996fc7f3076"
+        },
+        {
+          "code": "no_range",
+          "id": "0c7c2e26-0a98-42cf-a47c-9a3999fb513b",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Product Engineer",
+          "url": "https://jobs.ashbyhq.com/linear/0c7c2e26-0a98-42cf-a47c-9a3999fb513b"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "0dbd1790-2652-49fc-861f-7451ae4eb1cf",
+          "location": "Singapore / Australia",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Success Manager, APAC",
+          "url": "https://jobs.ashbyhq.com/linear/0dbd1790-2652-49fc-861f-7451ae4eb1cf"
+        },
+        {
+          "code": "no_range",
+          "id": "12f8f208-0b9c-4569-bb3d-41c8a197029e",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Senior / Staff Product Engineer",
+          "url": "https://jobs.ashbyhq.com/linear/12f8f208-0b9c-4569-bb3d-41c8a197029e"
+        },
+        {
+          "code": "no_range",
+          "id": "1aa6f672-5917-49aa-b015-70ebff901923",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Deal Desk",
+          "url": "https://jobs.ashbyhq.com/linear/1aa6f672-5917-49aa-b015-70ebff901923"
+        },
+        {
+          "code": "no_range",
+          "id": "1d652292-04d9-405c-8101-578efd020e94",
+          "location": "North America / Europe",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Developer Relations",
+          "url": "https://jobs.ashbyhq.com/linear/1d652292-04d9-405c-8101-578efd020e94"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "41b3ed5c-f7a0-40b7-8a77-4952868c3d47",
+          "location": "Singapore / Australia",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Support Specialist, APAC",
+          "url": "https://jobs.ashbyhq.com/linear/41b3ed5c-f7a0-40b7-8a77-4952868c3d47"
+        },
+        {
+          "code": "no_range",
+          "id": "493579ff-3198-420f-ab6a-b8bb971cb513",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Senior / Staff Security Engineer",
+          "url": "https://jobs.ashbyhq.com/linear/493579ff-3198-420f-ab6a-b8bb971cb513"
+        },
+        {
+          "code": "no_range",
+          "id": "4c4f5bf5-0628-4145-b211-eb533edab8d1",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Field Marketing Manager",
+          "url": "https://jobs.ashbyhq.com/linear/4c4f5bf5-0628-4145-b211-eb533edab8d1"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "5b9997fd-7507-4437-8fd7-14178c99ab5d",
+          "location": "Europe",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Production Designer",
+          "url": "https://jobs.ashbyhq.com/linear/5b9997fd-7507-4437-8fd7-14178c99ab5d"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "62a4524c-75da-499e-b150-7f68ce9f2da3",
+          "location": "Europe",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Developer Relations",
+          "url": "https://jobs.ashbyhq.com/linear/62a4524c-75da-499e-b150-7f68ce9f2da3"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "6dd5500a-4bd4-4f57-ba09-7b07acefecf4",
+          "location": "Singapore",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Enterprise",
+          "url": "https://jobs.ashbyhq.com/linear/6dd5500a-4bd4-4f57-ba09-7b07acefecf4"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "86abcce0-04b2-405c-9a8e-e0ca84813914",
+          "location": "Europe",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Manager",
+          "url": "https://jobs.ashbyhq.com/linear/86abcce0-04b2-405c-9a8e-e0ca84813914"
+        },
+        {
+          "code": "no_range",
+          "id": "a264869e-f058-487c-ab7f-9b77dffa427c",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Senior / Staff Product Designer",
+          "url": "https://jobs.ashbyhq.com/linear/a264869e-f058-487c-ab7f-9b77dffa427c"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "aa0673c5-9e06-42f8-a720-6c2e43930c5a",
+          "location": "Australia / Singapore",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Support Specialist, APAC",
+          "url": "https://jobs.ashbyhq.com/linear/aa0673c5-9e06-42f8-a720-6c2e43930c5a"
+        },
+        {
+          "code": "no_range",
+          "id": "b32de590-06ce-47d4-8994-66b936df908d",
+          "location": "North America / Europe",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Production Designer",
+          "url": "https://jobs.ashbyhq.com/linear/b32de590-06ce-47d4-8994-66b936df908d"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "b3346acf-44be-4565-b1c0-10d482d3ad4e",
+          "location": "London",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Marketing Manager",
+          "url": "https://jobs.ashbyhq.com/linear/b3346acf-44be-4565-b1c0-10d482d3ad4e"
+        },
+        {
+          "code": "no_range",
+          "id": "b4a7764e-c680-4bdf-9956-dc78f2ca94d5",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Senior / Staff Product Engineer, Applied AI",
+          "url": "https://jobs.ashbyhq.com/linear/b4a7764e-c680-4bdf-9956-dc78f2ca94d5"
+        },
+        {
+          "code": "no_range",
+          "id": "b7669c4b-eeca-421d-ba9a-d90203f6fcb2",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Product Manager",
+          "url": "https://jobs.ashbyhq.com/linear/b7669c4b-eeca-421d-ba9a-d90203f6fcb2"
+        },
+        {
+          "code": "no_range",
+          "id": "c0abc97e-b4d7-4ad7-bd13-bc40f4023227",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Product Marketing Manager",
+          "url": "https://jobs.ashbyhq.com/linear/c0abc97e-b4d7-4ad7-bd13-bc40f4023227"
+        },
+        {
+          "code": "no_range",
+          "id": "c21af93e-210f-4969-8eaa-90fb16a5b720",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Account Executive, Startups",
+          "url": "https://jobs.ashbyhq.com/linear/c21af93e-210f-4969-8eaa-90fb16a5b720"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "c97e034e-19a8-4ec7-89a5-c81987451da8",
+          "location": "Europe",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Creative Producer",
+          "url": "https://jobs.ashbyhq.com/linear/c97e034e-19a8-4ec7-89a5-c81987451da8"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "cb8e77a6-4316-45c6-ac8d-7ade980cd65e",
+          "location": "Singapore",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Account Executive, Growth ",
+          "url": "https://jobs.ashbyhq.com/linear/cb8e77a6-4316-45c6-ac8d-7ade980cd65e"
+        },
+        {
+          "code": "no_range",
+          "id": "cd5ae036-0223-427a-b038-ba16ef9dcb32",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Senior / Staff Fullstack Engineer",
+          "url": "https://jobs.ashbyhq.com/linear/cd5ae036-0223-427a-b038-ba16ef9dcb32"
+        },
+        {
+          "code": "no_range",
+          "id": "d062065e-05bb-42ce-a430-ec205695cc2e",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Product Support Specialist, Pacific/Mountain Time",
+          "url": "https://jobs.ashbyhq.com/linear/d062065e-05bb-42ce-a430-ec205695cc2e"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "d37b3d76-3080-47f9-8a19-60505573112c",
+          "location": "London",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Solutions Engineer, Europe",
+          "url": "https://jobs.ashbyhq.com/linear/d37b3d76-3080-47f9-8a19-60505573112c"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "d3bc1ced-3ce4-4086-a050-555055dbb1ff",
+          "location": "Europe",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior / Staff Fullstack Engineer",
+          "url": "https://jobs.ashbyhq.com/linear/d3bc1ced-3ce4-4086-a050-555055dbb1ff"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "d8890a6d-ce76-4c3d-aacc-34c1ed150d91",
+          "location": "Singapore / Australia",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Solutions Engineer, APAC",
+          "url": "https://jobs.ashbyhq.com/linear/d8890a6d-ce76-4c3d-aacc-34c1ed150d91"
+        },
+        {
+          "code": "no_range",
+          "id": "eac7f181-d658-4943-9430-51bae2bcd110",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Mobile Product Designer",
+          "url": "https://jobs.ashbyhq.com/linear/eac7f181-d658-4943-9430-51bae2bcd110"
+        },
+        {
+          "code": "no_range",
+          "id": "f16dd5e9-ed10-4b8e-b5d7-1b8b5e3f002f",
+          "location": "North America / Europe",
+          "snippets_sha256": "a0b42700eb3bb5681b7493171ea6473dc1b5128a8c062db45f3a06d033fb9cf7",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Creative Producer",
+          "url": "https://jobs.ashbyhq.com/linear/f16dd5e9-ed10-4b8e-b5d7-1b8b5e3f002f"
+        },
+        {
+          "code": "no_range",
+          "id": "f272fc4a-91a7-4dcf-9cb5-3600ebaf14e1",
+          "location": "North America",
+          "snippets_sha256": "912225602e537d3792067127ba38a4a6ec434a41d1ada16957d75cb7bf4ff2ab",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Analytics Engineer",
+          "url": "https://jobs.ashbyhq.com/linear/f272fc4a-91a7-4dcf-9cb5-3600ebaf14e1"
+        }
+      ]
+    },
+    "audit_3": {
+      "ats": "greenhouse",
+      "board": "airtable",
+      "employer": "Airtable",
+      "state": "done",
+      "board_size": "5",
+      "steps": [
+        {
+          "at": "2026-11-02T07:27:10",
+          "by": "0xf14DBAe92946654b40889B65f2de3b819aC8e8f5",
+          "read": 5,
+          "packet": "0edc75e6b1068ee4c4ec7e75dd3bbdd5baac6b2c8b4c504d6ee8c9522a788ee1",
+          "results": "87b4d421b8c50f91dd8c318f897898aee757488bc4eb7203e37fe120e8d151d0",
+          "paid": "50000000000000000"
+        }
+      ],
+      "score": {
+        "in_scope": 4,
+        "missing": 0,
+        "read": 5,
+        "score_bp": 10000,
+        "show_pay": 4,
+        "state": "done",
+        "unclear": 0,
+        "unverified": 0
+      },
+      "missing": [],
+      "results": [
+        {
+          "code": "range_text",
+          "id": "8368711002",
+          "location": "Remote - US",
+          "snippets_sha256": "0e6177bd96db33ea6ed0a884b06a0dd7d2ec9ce374c442f0aa5e2c99ab108b1a",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Sales Manager, Strategic Accounts",
+          "url": "https://job-boards.greenhouse.io/airtable/jobs/8368711002"
+        },
+        {
+          "code": "range_text",
+          "id": "8403107002",
+          "location": "Remote - US",
+          "snippets_sha256": "3403e595aa53acd5b78b8bc0115b1e3354f501c6d7b2a49af51ac0100d7451be",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Account Executive, Corporate",
+          "url": "https://job-boards.greenhouse.io/airtable/jobs/8403107002"
+        },
+        {
+          "code": "range_text",
+          "id": "8403127002",
+          "location": "Remote - US",
+          "snippets_sha256": "dc5c9d70b5728b757ae393d3b010b3d82a5ecce6e81cecb86720587203d24759",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Account Executive, Strategic",
+          "url": "https://job-boards.greenhouse.io/airtable/jobs/8403127002"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8425211002",
+          "location": "Austin, TX",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Business Development Representative",
+          "url": "https://job-boards.greenhouse.io/airtable/jobs/8425211002"
+        },
+        {
+          "code": "range_text",
+          "id": "8905022002",
+          "location": "Remote - US",
+          "snippets_sha256": "4334e3b6e45913864ce5947be71b96e62a4d6b2d5f29434a072d391246bed544",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Renewals Associate",
+          "url": "https://job-boards.greenhouse.io/airtable/jobs/8905022002"
+        }
+      ]
+    },
+    "audit_4": {
+      "ats": "greenhouse",
+      "board": "asana",
+      "employer": "Asana",
+      "state": "done",
+      "board_size": "110",
+      "steps": [
+        {
+          "at": "2026-11-02T07:27:30",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 25,
+          "packet": "280da7d55fa0c0c9ca8d4c00b4a2a9b5f5ad302a08053bc18ad650d19e6fd941",
+          "results": "65c30b71603c160b5d43fdc7d90a2aa6a07a3a47c1cca5d6dafec82c1d9f5b0a",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:27:49",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 25,
+          "packet": "dc9a222d3c43900239f865d1b046638ed0069a5e48635aa0201bcf858e01aefe",
+          "results": "716b323ca73dab8c076d11a3714781eead21334d0dffc830b6af4e0e962b8f7d",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:28:06",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 25,
+          "packet": "9e5687139c0793cca2896740284a109e1873bbe75d908dfd5b8e664aa2fb1b70",
+          "results": "b4fff8acd61fb8b12f76480e578f6bd27120ea8d1b953cd5743080dc71f83d02",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:28:45",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 25,
+          "packet": "6b51f6cb12bbb1071793435a2c60770968a604ed054382e7254fce55a422880f",
+          "results": "b4c7a7ebba144664f94ab321cb3871716829a1034194651ddf5ca2ebc2bae868",
+          "paid": "50000000000000000"
+        },
+        {
+          "at": "2026-11-02T07:29:10",
+          "by": "0xC0b3E7D6588F995Cc5Ec3392fCFFA1784d68F3Fe",
+          "read": 10,
+          "packet": "7b6db53a0302610b90be24797812065feb61ae17453acfe3e75b82618afe04cb",
+          "results": "40e05535abc10deac67d58da22cad94abe2850a57842d888107733481cab2c87",
+          "paid": "50000000000000000"
+        }
+      ],
+      "score": {
+        "in_scope": 47,
+        "missing": 0,
+        "read": 110,
+        "score_bp": 10000,
+        "show_pay": 47,
+        "state": "done",
+        "unclear": 0,
+        "unverified": 0
+      },
+      "missing": [],
+      "results": [
+        {
+          "code": "range_text",
+          "id": "6981655",
+          "location": "Chicago",
+          "snippets_sha256": "c87c6bd4d9af4b8cdd13840090e7fded77abcc4b4b890bfdab80d1fff1e47664",
+          "states": [
+            "IL"
+          ],
+          "title": "Corporate Account Executive",
+          "url": "https://www.asana.com/jobs/apply/6981655?gh_jid=6981655"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7350641",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Staff Detection Engineer",
+          "url": "https://www.asana.com/jobs/apply/7350641?gh_jid=7350641"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7380414",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Security Engineer, Threat Response",
+          "url": "https://www.asana.com/jobs/apply/7380414?gh_jid=7380414"
+        },
+        {
+          "code": "range_text",
+          "id": "7392983",
+          "location": "US - Remote West",
+          "snippets_sha256": "748fd322e8201d67fb4d5913c8fd5d6e71c66e9c8a56c327446e6623121e4181",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Enterprise Account Executive, SLED",
+          "url": "https://www.asana.com/jobs/apply/7392983?gh_jid=7392983"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7586914",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Engineering Group Lead, Mobile",
+          "url": "https://www.asana.com/jobs/apply/7586914?gh_jid=7586914"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7586960",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Manager, Command",
+          "url": "https://www.asana.com/jobs/apply/7586960?gh_jid=7586960"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7587002",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Designer, Coordinate",
+          "url": "https://www.asana.com/jobs/apply/7587002?gh_jid=7587002"
+        },
+        {
+          "code": "range_text",
+          "id": "7594694",
+          "location": "Chicago",
+          "snippets_sha256": "71c88b87e2946c0dc4f77693be7a4706dad858e3c4d483e739d3cb7d22968cfc",
+          "states": [
+            "IL"
+          ],
+          "title": "Corporate Account Executive",
+          "url": "https://www.asana.com/jobs/apply/7594694?gh_jid=7594694"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7629129",
+          "location": "London",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Head of UKI Enterprise Sales",
+          "url": "https://www.asana.com/jobs/apply/7629129?gh_jid=7629129"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7776446",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Technical Lead, API",
+          "url": "https://www.asana.com/jobs/apply/7776446?gh_jid=7776446"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7821585",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Third Party Risk Management Lead",
+          "url": "https://www.asana.com/jobs/apply/7821585?gh_jid=7821585"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7839280",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "IT Systems Engineer - Identity",
+          "url": "https://www.asana.com/jobs/apply/7839280?gh_jid=7839280"
+        },
+        {
+          "code": "range_text",
+          "id": "7867211",
+          "location": "Chicago",
+          "snippets_sha256": "eef6988bac732502a90336df6ef7936c462365102b153ef8b9f05fe075bab1ef",
+          "states": [
+            "IL"
+          ],
+          "title": "People Partner, GTM",
+          "url": "https://www.asana.com/jobs/apply/7867211?gh_jid=7867211"
+        },
+        {
+          "code": "range_text",
+          "id": "7959069",
+          "location": "San Francisco",
+          "snippets_sha256": "94848e6a1c3fd2324c37ca0049130d2550073d6fd13c03ce12c148a93ae6ea9d",
+          "states": [
+            "CA"
+          ],
+          "title": "Senior Security Technical Program Manager",
+          "url": "https://www.asana.com/jobs/apply/7959069?gh_jid=7959069"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7961454",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer, Product",
+          "url": "https://www.asana.com/jobs/apply/7961454?gh_jid=7961454"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7962306",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer, AI",
+          "url": "https://www.asana.com/jobs/apply/7962306?gh_jid=7962306"
+        },
+        {
+          "code": "range_text",
+          "id": "7962412",
+          "location": "San Francisco",
+          "snippets_sha256": "9df25547ffc366668455ca04b9ca9c89cbbf38fb482735ec5e006b651182e491",
+          "states": [
+            "CA"
+          ],
+          "title": "Software Engineer, Data Loading Infrastructure ",
+          "url": "https://www.asana.com/jobs/apply/7962412?gh_jid=7962412"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7964297",
+          "location": "Reykjavík",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Backend Software Engineer",
+          "url": "https://www.asana.com/jobs/apply/7964297?gh_jid=7964297"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7964316",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Infrastructure Engineer (Software-Focused)",
+          "url": "https://www.asana.com/jobs/apply/7964316?gh_jid=7964316"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7964361",
+          "location": "Reykjavík",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Backend Software Engineer",
+          "url": "https://www.asana.com/jobs/apply/7964361?gh_jid=7964361"
+        },
+        {
+          "code": "range_text",
+          "id": "7964388",
+          "location": "New York City",
+          "snippets_sha256": "109cb38d97fdcd463bf8115ae06b20f43f52e014a0911700f8673a2cac767693",
+          "states": [
+            "NY"
+          ],
+          "title": "Staff Software Engineer, AI Developer Experience",
+          "url": "https://www.asana.com/jobs/apply/7964388?gh_jid=7964388"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7964420",
+          "location": "Reykjavík",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Staff Software Engineer, Query and Access Control",
+          "url": "https://www.asana.com/jobs/apply/7964420?gh_jid=7964420"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7964484",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Security Engineer, Threat Response",
+          "url": "https://www.asana.com/jobs/apply/7964484?gh_jid=7964484"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7977717",
+          "location": "Tokyo",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "People Partner, APJ",
+          "url": "https://www.asana.com/jobs/apply/7977717?gh_jid=7977717"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7978649",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Software Engineer, AI Retrieval",
+          "url": "https://www.asana.com/jobs/apply/7978649?gh_jid=7978649"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "7978671",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Staff Software Engineer, AI ",
+          "url": "https://www.asana.com/jobs/apply/7978671?gh_jid=7978671"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8017552",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Manager, Adapt",
+          "url": "https://www.asana.com/jobs/apply/8017552?gh_jid=8017552"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8024052",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Designer",
+          "url": "https://www.asana.com/jobs/apply/8024052?gh_jid=8024052"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8027399",
+          "location": "Dublin",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Solutions Architect",
+          "url": "https://www.asana.com/jobs/apply/8027399?gh_jid=8027399"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8044811",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Analytical Engineering Manager",
+          "url": "https://www.asana.com/jobs/apply/8044811?gh_jid=8044811"
+        },
+        {
+          "code": "range_text",
+          "id": "8044815",
+          "location": "New York City",
+          "snippets_sha256": "132bc0f55a787b2e844f36c47c669c1d90e552df5e59691e1a4b4a610a9f630a",
+          "states": [
+            "NY"
+          ],
+          "title": "Senior Product Manager, AI Context",
+          "url": "https://www.asana.com/jobs/apply/8044815?gh_jid=8044815"
+        },
+        {
+          "code": "range_text",
+          "id": "8054355",
+          "location": "US WA Seattle - Remote",
+          "snippets_sha256": "812d1b7fd6779a141b380ae6b6e29b7e100c12f9b8b1080fb1b8532072890b3c",
+          "states": [
+            "WA"
+          ],
+          "title": "Strategic Enterprise Account Executive, Amazon",
+          "url": "https://www.asana.com/jobs/apply/8054355?gh_jid=8054355"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8055062",
+          "location": "Tokyo",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Corporate Account Executive",
+          "url": "https://www.asana.com/jobs/apply/8055062?gh_jid=8055062"
+        },
+        {
+          "code": "range_text",
+          "id": "8078142",
+          "location": "San Francisco",
+          "snippets_sha256": "8c4c836f0b213b26d33044385c1b0a07b71a77e02e29aeb8ae83bdb4a2a49740",
+          "states": [
+            "CA"
+          ],
+          "title": "Head of Digital and Scaled Customer Success",
+          "url": "https://www.asana.com/jobs/apply/8078142?gh_jid=8078142"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8092044",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Analytical Engineer",
+          "url": "https://www.asana.com/jobs/apply/8092044?gh_jid=8092044"
+        },
+        {
+          "code": "range_text",
+          "id": "8095543",
+          "location": "San Francisco",
+          "snippets_sha256": "37f985a715a1e1d62d06c56db596a57bd6b6fe97b158ab863d486e45c8613ca7",
+          "states": [
+            "CA"
+          ],
+          "title": "Developer Advocate",
+          "url": "https://www.asana.com/jobs/apply/8095543?gh_jid=8095543"
+        },
+        {
+          "code": "range_text",
+          "id": "8095555",
+          "location": "San Francisco",
+          "snippets_sha256": "5d2401c738450a0cffed21b10df27cb093dc28fe6707f0dec4073ee216789188",
+          "states": [
+            "CA"
+          ],
+          "title": "Senior Staff Software Engineer, Developer Productivity",
+          "url": "https://www.asana.com/jobs/apply/8095555?gh_jid=8095555"
+        },
+        {
+          "code": "range_text",
+          "id": "8098020",
+          "location": "San Francisco",
+          "snippets_sha256": "47d38b6319cb275d781e6b70ccc3b3bd89fbbf58944fd5ebcdac094553531ecf",
+          "states": [
+            "CA"
+          ],
+          "title": "Senior Staff Engineer, AI",
+          "url": "https://www.asana.com/jobs/apply/8098020?gh_jid=8098020"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8100429",
+          "location": "Munich",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Head of Enterprise Sales, DACH",
+          "url": "https://www.asana.com/jobs/apply/8100429?gh_jid=8100429"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8107419",
+          "location": "Tokyo",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Success Manager, Scaled Accounts",
+          "url": "https://www.asana.com/jobs/apply/8107419?gh_jid=8107419"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8121619",
+          "location": "Reykjavík",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Software Engineer, Development Infrastructure",
+          "url": "https://www.asana.com/jobs/apply/8121619?gh_jid=8121619"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8129531",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Social Media Lead",
+          "url": "https://www.asana.com/jobs/apply/8129531?gh_jid=8129531"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8131896",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Data Engineer ",
+          "url": "https://www.asana.com/jobs/apply/8131896?gh_jid=8131896"
+        },
+        {
+          "code": "range_text",
+          "id": "8137748",
+          "location": "San Francisco",
+          "snippets_sha256": "6ca59e3fd8834aa1c6dc85bbe95d5376f08806baa6520a8e2c1e79f14e55c131",
+          "states": [
+            "CA"
+          ],
+          "title": "Benefits Manager, NAMER",
+          "url": "https://www.asana.com/jobs/apply/8137748?gh_jid=8137748"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8137817",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Security Engineer",
+          "url": "https://www.asana.com/jobs/apply/8137817?gh_jid=8137817"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8140029",
+          "location": "Reykjavík",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Software Engineer, Development Infrastructure",
+          "url": "https://www.asana.com/jobs/apply/8140029?gh_jid=8140029"
+        },
+        {
+          "code": "range_text",
+          "id": "8154796",
+          "location": "San Francisco",
+          "snippets_sha256": "1de5d07c981e51d7ca72c75d258c635b251d1abcbd368787dc0671426aea89ea",
+          "states": [
+            "CA"
+          ],
+          "title": "Design Leader, Emerging Products",
+          "url": "https://www.asana.com/jobs/apply/8154796?gh_jid=8154796"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8163416",
+          "location": "Munich",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Corporate Account Executive, DACH",
+          "url": "https://www.asana.com/jobs/apply/8163416?gh_jid=8163416"
+        },
+        {
+          "code": "range_text",
+          "id": "8165185",
+          "location": "New York City",
+          "snippets_sha256": "812d1b7fd6779a141b380ae6b6e29b7e100c12f9b8b1080fb1b8532072890b3c",
+          "states": [
+            "NY"
+          ],
+          "title": "Strategic Enterprise Account Executive, Amazon",
+          "url": "https://www.asana.com/jobs/apply/8165185?gh_jid=8165185"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8177854",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Analytical Engineering Manager",
+          "url": "https://www.asana.com/jobs/apply/8177854?gh_jid=8177854"
+        },
+        {
+          "code": "range_text",
+          "id": "8180874",
+          "location": "San Francisco",
+          "snippets_sha256": "d3b9189aeb82258b752a52bac0eeca39b9e34d88af8f6ca03a5c7203fbe2a127",
+          "states": [
+            "CA"
+          ],
+          "title": "Senior Product Manager, AI Studio",
+          "url": "https://www.asana.com/jobs/apply/8180874?gh_jid=8180874"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8188918",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Security Technical Program Manager",
+          "url": "https://www.asana.com/jobs/apply/8188918?gh_jid=8188918"
+        },
+        {
+          "code": "range_text",
+          "id": "8189390",
+          "location": "San Francisco",
+          "snippets_sha256": "e97ab57ef5b6533bc91d7925323dc74e54b2e8b90c61300074a44109df5e4387",
+          "states": [
+            "CA"
+          ],
+          "title": "Revenue Manager",
+          "url": "https://www.asana.com/jobs/apply/8189390?gh_jid=8189390"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8189734",
+          "location": "Tokyo",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Renewals Manager",
+          "url": "https://www.asana.com/jobs/apply/8189734?gh_jid=8189734"
+        },
+        {
+          "code": "range_text",
+          "id": "8193555",
+          "location": "San Francisco",
+          "snippets_sha256": "41768e7505de629753e6e03f7d7fb2fe746c1a8b3dd6069fb6e609a5fad6cbdd",
+          "states": [
+            "CA"
+          ],
+          "title": "Head of Research",
+          "url": "https://www.asana.com/jobs/apply/8193555?gh_jid=8193555"
+        },
+        {
+          "code": "range_text",
+          "id": "8194380",
+          "location": "San Francisco",
+          "snippets_sha256": "a5136ea97dbbb0500890391af90c658598410ddee896d471ba66e18c907a7137",
+          "states": [
+            "CA"
+          ],
+          "title": "AI GTM Specialist",
+          "url": "https://www.asana.com/jobs/apply/8194380?gh_jid=8194380"
+        },
+        {
+          "code": "range_text",
+          "id": "8194410",
+          "location": "Chicago",
+          "snippets_sha256": "366a0e37d7045005df216ee8ebc05424fc78cad95aecbfd8686a3802bfe66316",
+          "states": [
+            "IL"
+          ],
+          "title": "Technical Consultant",
+          "url": "https://www.asana.com/jobs/apply/8194410?gh_jid=8194410"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8194506",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Product Marketing Manager, Marketing & Operations Audiences",
+          "url": "https://www.asana.com/jobs/apply/8194506?gh_jid=8194506"
+        },
+        {
+          "code": "range_text",
+          "id": "8194522",
+          "location": "San Francisco",
+          "snippets_sha256": "395a3d2237c8a72782c3f0903e09b171f9a32f375fda3ae63708f912b5149790",
+          "states": [
+            "CA"
+          ],
+          "title": "Software Engineer - AI Teammates Platform",
+          "url": "https://www.asana.com/jobs/apply/8194522?gh_jid=8194522"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8201809",
+          "location": "Tokyo",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Success Manager - Named Accounts",
+          "url": "https://www.asana.com/jobs/apply/8201809?gh_jid=8201809"
+        },
+        {
+          "code": "range_text",
+          "id": "8204614",
+          "location": "San Francisco",
+          "snippets_sha256": "66e62d857f20ff0389ded9d73d4be7e54bb005336c5629d5e637d59854dc85a8",
+          "states": [
+            "CA"
+          ],
+          "title": "Lead Product Manager, Enterprise Services Management ",
+          "url": "https://www.asana.com/jobs/apply/8204614?gh_jid=8204614"
+        },
+        {
+          "code": "range_text",
+          "id": "8212172",
+          "location": "New York City",
+          "snippets_sha256": "5d2401c738450a0cffed21b10df27cb093dc28fe6707f0dec4073ee216789188",
+          "states": [
+            "NY"
+          ],
+          "title": "Senior Staff Software Engineer, Developer Productivity",
+          "url": "https://www.asana.com/jobs/apply/8212172?gh_jid=8212172"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8212344",
+          "location": "Dublin",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "IT Support Specialist",
+          "url": "https://www.asana.com/jobs/apply/8212344?gh_jid=8212344"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8213887",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Lead Product Manager, Enterprise Services Management ",
+          "url": "https://www.asana.com/jobs/apply/8213887?gh_jid=8213887"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8214792",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Workday Integration Developer",
+          "url": "https://www.asana.com/jobs/apply/8214792?gh_jid=8214792"
+        },
+        {
+          "code": "range_text",
+          "id": "8214906",
+          "location": "San Francisco",
+          "snippets_sha256": "02172ad4d8d8429e1bd793bbabfa8605fb6eda4c1a136dd0acbdef9152433e57",
+          "states": [
+            "CA"
+          ],
+          "title": "Pricing Strategy Director",
+          "url": "https://www.asana.com/jobs/apply/8214906?gh_jid=8214906"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8221174",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "API Support Engineer",
+          "url": "https://www.asana.com/jobs/apply/8221174?gh_jid=8221174"
+        },
+        {
+          "code": "range_text",
+          "id": "8226969",
+          "location": "San Francisco",
+          "snippets_sha256": "6f444b6285dcfa1ad38b6a06d866bcc6ab481737ad270a9c185752c4a8def40b",
+          "states": [
+            "CA"
+          ],
+          "title": "Staff Software Engineer, Data Loading Infrastructure",
+          "url": "https://www.asana.com/jobs/apply/8226969?gh_jid=8226969"
+        },
+        {
+          "code": "range_text",
+          "id": "8227150",
+          "location": "San Francisco",
+          "snippets_sha256": "0c452967383b49c03d1389117c2ae588072ebd887c11f8c31caf17cc2dad1e7c",
+          "states": [
+            "CA"
+          ],
+          "title": "Global Design & Project Manager",
+          "url": "https://www.asana.com/jobs/apply/8227150?gh_jid=8227150"
+        },
+        {
+          "code": "range_text",
+          "id": "8227362",
+          "location": "San Francisco",
+          "snippets_sha256": "80a05e8a6fd5485b25408049d4d85bd17abfcb9fc8525be3d8686b662fb6632f",
+          "states": [
+            "CA"
+          ],
+          "title": "Manager, Customer Success",
+          "url": "https://www.asana.com/jobs/apply/8227362?gh_jid=8227362"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8232028",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Copywriter",
+          "url": "https://www.asana.com/jobs/apply/8232028?gh_jid=8232028"
+        },
+        {
+          "code": "range_text",
+          "id": "8234428",
+          "location": "San Francisco",
+          "snippets_sha256": "83f39745fad52e152d88418ed873fb39cd9f316467d0e656076beeee48b93f53",
+          "states": [
+            "CA"
+          ],
+          "title": "Emerging Enterprise Account Executive, Nonprofit",
+          "url": "https://www.asana.com/jobs/apply/8234428?gh_jid=8234428"
+        },
+        {
+          "code": "range_text",
+          "id": "8241249",
+          "location": "Chicago",
+          "snippets_sha256": "9f829429fcbea20f235f84a4c7f86420f96182b0d76a40477cb0c7572935834a",
+          "states": [
+            "IL"
+          ],
+          "title": "Digital & Scaled Customer Success Program Manager",
+          "url": "https://www.asana.com/jobs/apply/8241249?gh_jid=8241249"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8241519",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Sr. Manager, Web Strategy",
+          "url": "https://www.asana.com/jobs/apply/8241519?gh_jid=8241519"
+        },
+        {
+          "code": "range_text",
+          "id": "8244205",
+          "location": "San Francisco",
+          "snippets_sha256": "62b5f15407d2e0bd059dec9e217e80d1939403912dd594db984483e8bd1aa281",
+          "states": [
+            "CA"
+          ],
+          "title": "Corporate Strategy and Planning Lead",
+          "url": "https://www.asana.com/jobs/apply/8244205?gh_jid=8244205"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8244347",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Security Engineer",
+          "url": "https://www.asana.com/jobs/apply/8244347?gh_jid=8244347"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8244380",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Experience Researcher, PLG",
+          "url": "https://www.asana.com/jobs/apply/8244380?gh_jid=8244380"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8250168",
+          "location": "Dublin",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Designated Support Engineer",
+          "url": "https://www.asana.com/jobs/apply/8250168?gh_jid=8250168"
+        },
+        {
+          "code": "range_text",
+          "id": "8257456",
+          "location": "New York City",
+          "snippets_sha256": "37f985a715a1e1d62d06c56db596a57bd6b6fe97b158ab863d486e45c8613ca7",
+          "states": [
+            "NY"
+          ],
+          "title": "Developer Advocate",
+          "url": "https://www.asana.com/jobs/apply/8257456?gh_jid=8257456"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8257464",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Developer Advocate",
+          "url": "https://www.asana.com/jobs/apply/8257464?gh_jid=8257464"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8262890",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Product Marketing Manager, IT and CIO Audiences",
+          "url": "https://www.asana.com/jobs/apply/8262890?gh_jid=8262890"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8264089",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Fullstack Engineer",
+          "url": "https://www.asana.com/jobs/apply/8264089?gh_jid=8264089"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8264096",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Software Engineer",
+          "url": "https://www.asana.com/jobs/apply/8264096?gh_jid=8264096"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8275101",
+          "location": "Remote",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Enablement Manager",
+          "url": "https://www.asana.com/jobs/apply/8275101?gh_jid=8275101"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8275149",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Data Scientist",
+          "url": "https://www.asana.com/jobs/apply/8275149?gh_jid=8275149"
+        },
+        {
+          "code": "range_text",
+          "id": "8275152",
+          "location": "San Francisco",
+          "snippets_sha256": "2d39fd470129643f0fc001b899e126a326bb83275b27486fde354770d27f4a8b",
+          "states": [
+            "CA"
+          ],
+          "title": "Senior Manager, Payroll",
+          "url": "https://www.asana.com/jobs/apply/8275152?gh_jid=8275152"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8279050",
+          "location": "Singapore",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Enterprise Account Executive (Korean Market)",
+          "url": "https://www.asana.com/jobs/apply/8279050?gh_jid=8279050"
+        },
+        {
+          "code": "range_text",
+          "id": "8279085",
+          "location": "San Francisco",
+          "snippets_sha256": "256a5c296ecd35f7bfa94223125a52b08a199b140ddd9dd57659f1204520319d",
+          "states": [
+            "CA"
+          ],
+          "title": "Emerging Enterprise Account Executive",
+          "url": "https://www.asana.com/jobs/apply/8279085?gh_jid=8279085"
+        },
+        {
+          "code": "range_text",
+          "id": "8279133",
+          "location": "Chicago",
+          "snippets_sha256": "79a34c498a86e1538f2bbdd159ad4c81ee65d932bff7a09b0c330d359340e689",
+          "states": [
+            "IL"
+          ],
+          "title": "Manager, Customer Success",
+          "url": "https://www.asana.com/jobs/apply/8279133?gh_jid=8279133"
+        },
+        {
+          "code": "range_text",
+          "id": "8282374",
+          "location": "San Francisco",
+          "snippets_sha256": "1fe501a7e3844ace4f730a9057d1ccaec9aa87caf71836a739a30e5a3f3f2b8e",
+          "states": [
+            "CA"
+          ],
+          "title": "Business Value Consultant",
+          "url": "https://www.asana.com/jobs/apply/8282374?gh_jid=8282374"
+        },
+        {
+          "code": "range_text",
+          "id": "8282422",
+          "location": "Chicago",
+          "snippets_sha256": "4aebe69e15e949d58357c3dfdae2176764b31c6af188e3fc2190f37394be6764",
+          "states": [
+            "IL"
+          ],
+          "title": "Sales Engineer",
+          "url": "https://www.asana.com/jobs/apply/8282422?gh_jid=8282422"
+        },
+        {
+          "code": "range_text",
+          "id": "8282518",
+          "location": "Chicago",
+          "snippets_sha256": "848dbfc0988f072795fb1e415b31605914a9fccfac146b460904adab6990cdcf",
+          "states": [
+            "IL"
+          ],
+          "title": "Legal Operations Analyst",
+          "url": "https://www.asana.com/jobs/apply/8282518?gh_jid=8282518"
+        },
+        {
+          "code": "range_text",
+          "id": "8282522",
+          "location": "San Francisco",
+          "snippets_sha256": "d82a9115aa442cb8cc5d8e04153a1f535060b6703115f63f9d1d59811d2526e4",
+          "states": [
+            "CA"
+          ],
+          "title": "Corporate and Strategic Finance, FP&A",
+          "url": "https://www.asana.com/jobs/apply/8282522?gh_jid=8282522"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8282574",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Product Manager, Coordinate",
+          "url": "https://www.asana.com/jobs/apply/8282574?gh_jid=8282574"
+        },
+        {
+          "code": "range_text",
+          "id": "8282680",
+          "location": "US - Remote",
+          "snippets_sha256": "5bf02479cb4155a1634d30d9efcf77a0f3ef02f40e6554938081150e15d1f74f",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Renewal Manager",
+          "url": "https://www.asana.com/jobs/apply/8282680?gh_jid=8282680"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8282814",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Analytics Engineer",
+          "url": "https://www.asana.com/jobs/apply/8282814?gh_jid=8282814"
+        },
+        {
+          "code": "range_text",
+          "id": "8293698",
+          "location": "San Francisco",
+          "snippets_sha256": "0328a4b2f15245ee5b9f97d747112d85c143d2f5151d5589de2e7b3e99cfeab7",
+          "states": [
+            "CA"
+          ],
+          "title": "Commercial Counsel",
+          "url": "https://www.asana.com/jobs/apply/8293698?gh_jid=8293698"
+        },
+        {
+          "code": "range_text",
+          "id": "8303385",
+          "location": "San Francisco",
+          "snippets_sha256": "5c821fdb39723a7e70d512f03a9acfc085089815e2e0223a06a73880c18938ed",
+          "states": [
+            "CA"
+          ],
+          "title": "Head of Global Campaigns",
+          "url": "https://www.asana.com/jobs/apply/8303385?gh_jid=8303385"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8304535",
+          "location": "London",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Implementation Manager",
+          "url": "https://www.asana.com/jobs/apply/8304535?gh_jid=8304535"
+        },
+        {
+          "code": "range_text",
+          "id": "8304591",
+          "location": "Chicago",
+          "snippets_sha256": "2243443982df0892ca966a25bf9a4e6bb01ac765af92f3280532a442219d8ede",
+          "states": [
+            "IL"
+          ],
+          "title": "Senior Implementation Manager",
+          "url": "https://www.asana.com/jobs/apply/8304591?gh_jid=8304591"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8304597",
+          "location": "Sydney",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Customer Enablement Manager",
+          "url": "https://www.asana.com/jobs/apply/8304597?gh_jid=8304597"
+        },
+        {
+          "code": "range_text",
+          "id": "8311197",
+          "location": "US CA - Remote",
+          "snippets_sha256": "2243443982df0892ca966a25bf9a4e6bb01ac765af92f3280532a442219d8ede",
+          "states": [
+            "US-REMOTE"
+          ],
+          "title": "Senior Implementation Manager",
+          "url": "https://www.asana.com/jobs/apply/8311197?gh_jid=8311197"
+        },
+        {
+          "code": "range_text",
+          "id": "8311577",
+          "location": "Chicago",
+          "snippets_sha256": "37970d1f3187834b84e4d6f71c1c75a11b4f72c7532242173e8410a8c3f8f81b",
+          "states": [
+            "IL"
+          ],
+          "title": "Customer Success Manager (AI Success Architect)",
+          "url": "https://www.asana.com/jobs/apply/8311577?gh_jid=8311577"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8311992",
+          "location": "Warsaw",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Engineering Manager, Client Management",
+          "url": "https://www.asana.com/jobs/apply/8311992?gh_jid=8311992"
+        },
+        {
+          "code": "range_text",
+          "id": "8315830",
+          "location": "Chicago",
+          "snippets_sha256": "33431bde0dd7f5a5795b77159de94e4c7a397ab2c9d7f5b89727e4506fee356f",
+          "states": [
+            "IL"
+          ],
+          "title": "CX Technical Enablement Partner",
+          "url": "https://www.asana.com/jobs/apply/8315830?gh_jid=8315830"
+        },
+        {
+          "code": "range_text",
+          "id": "8318046",
+          "location": "San Francisco",
+          "snippets_sha256": "de5b18c41dd43f1599986704fd4827de816a3aad65a6bda8085b8eb8e0782c32",
+          "states": [
+            "CA"
+          ],
+          "title": "People Partner ",
+          "url": "https://www.asana.com/jobs/apply/8318046?gh_jid=8318046"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8319678",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Senior Software Engineer, AI",
+          "url": "https://www.asana.com/jobs/apply/8319678?gh_jid=8319678"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8324814",
+          "location": "Vancouver, BC",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Head of Web Strategy and Services",
+          "url": "https://www.asana.com/jobs/apply/8324814?gh_jid=8324814"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8326988",
+          "location": "Dublin",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "CX Technical Enablement Partner",
+          "url": "https://www.asana.com/jobs/apply/8326988?gh_jid=8326988"
+        },
+        {
+          "code": "out_of_scope",
+          "id": "8337386",
+          "location": "Munich",
+          "snippets_sha256": "",
+          "states": [],
+          "title": "Implementation Manager",
+          "url": "https://www.asana.com/jobs/apply/8337386?gh_jid=8337386"
+        }
+      ]
+    }
+  },
+  "reconciliations": [
+    {
+      "label": "after the refused programs: the contract kept nothing",
+      "expected": "0",
+      "balance": "0",
+      "ok": true
+    },
+    {
+      "label": "after the Figma audit",
+      "expected": "2700000000000000000",
+      "balance": "2700000000000000000",
+      "ok": true
+    },
+    {
+      "label": "end of run",
+      "expected": "2150000000000000000",
+      "balance": "2150000000000000000",
+      "ok": true
+    }
+  ],
+  "balances": {
+    "sponsor": "18000000000000000000",
+    "cofunder": "4000000000000000000",
+    "auditor": "2400000000000000000",
+    "bystander": "1450000000000000000"
+  },
+  "log": [
+    {
+      "who": "sponsor",
+      "call": "create_program(\"US pay transparency, fall 2026\", \"2026-02-31\", 0.05 GEN, 40)",
+      "value": "2",
+      "hash": "0x46a9dc6db8770b384d7a0557631d65a04aa0f531cf4cffd23f3fe17d4a9b047b",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "REFUNDED: ends must be a real calendar date written YYYY-MM-DD"
+    },
+    {
+      "who": "sponsor",
+      "call": "create_program(\"US pay transparency, fall 2026\", \"2027-01-01\", 0.001 GEN, 40)",
+      "value": "2",
+      "hash": "0xfc1e6e40bbf3b075d18824b55b21bb29f654fde3f195d358ec203aa4eaa28d61",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "REFUNDED: reward must be at least 0.01 GEN"
+    },
+    {
+      "who": "sponsor",
+      "call": "create_program(\"US pay transparency, fall 2026\", \"2027-01-01\", 0.05 GEN, 0)",
+      "value": "2",
+      "hash": "0xe3c49e7ce359e667976f7347b33e54fa5276782351acc2910fd06dc614549639",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "REFUNDED: per_auditor must be a whole number from 1 to 1000"
+    },
+    {
+      "who": "sponsor",
+      "call": "create_program(\"US pay transparency, fall 2026\", \"2027-01-01\", 0.05 GEN, 40)",
+      "value": "0.05",
+      "hash": "0x9c3768eb458115cc794e03233c3e9bb8c9f7da04801448bbcce1da1fb738c75f",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "REFUNDED: fund the program with at least one reward and at least 0.1 GEN"
+    },
+    {
+      "who": "sponsor",
+      "call": "create_program(\"US pay transparency, fall 2026\", \"2027-01-01\", 0.05 GEN, 40)",
+      "value": "2",
+      "hash": "0xfd39b05fda38c1aa839154fa704fd17f79223c26750e2018393b29f4283283f6",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "program_0"
+    },
+    {
+      "who": "cofunder",
+      "call": "fund(\"program_0\")",
+      "value": "1",
+      "hash": "0x55061a625d9f6c6660af843726d5921d2e2de5f234c286a05d4c06e567a3de0e",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "funded"
+    },
+    {
+      "who": "bystander",
+      "call": "fund(\"program_0\")",
+      "value": "0.05",
+      "hash": "0x7b25c70598715c5a25953ad2f92fd78bf96dfca308614752a552b17da6072c46",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "REFUNDED: Send at least 0.1 GEN to fund the program"
+    },
+    {
+      "who": "auditor",
+      "call": "open_audit(\"program_0\", \"lever\", \"figma\")",
+      "value": "0",
+      "hash": "0x72a3462b95b29eae1fb37d2a2d2f15bf76b0f95a74fcb5ccc2a40348ef2a5260",
+      "status": "ACCEPTED",
+      "exec": "ERROR",
+      "refused": "ats must be greenhouse or ashby"
+    },
+    {
+      "who": "auditor",
+      "call": "open_audit(\"program_0\", \"greenhouse\", \"no-such-board-payclear\")",
+      "value": "0",
+      "hash": "0x2fe4602955bb329948db9e3f6b55d82366ffcbd622203b882cc86ed47a07d5ed",
+      "status": "ACCEPTED",
+      "exec": "ERROR",
+      "refused": "greenhouse has no public job board named no-such-board-payclear"
+    },
+    {
+      "who": "auditor",
+      "call": "open_audit(\"program_0\", \"greenhouse\", \"figma\")",
+      "value": "0",
+      "hash": "0x7a95d1ede70250060a5a9f7f3cf2b796c6d5bf16e7394f49c7a00131f23a5860",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "audit_0"
+    },
+    {
+      "who": "bystander",
+      "call": "open_audit(\"program_0\", \"greenhouse\", \"figma\")",
+      "value": "0",
+      "hash": "0x96772b827bf18b33219fb6d54cb4a1d2a333230dc435205de440d2443b692d30",
+      "status": "ACCEPTED",
+      "exec": "ERROR",
+      "refused": "audit_0 is still auditing this board"
+    },
+    {
+      "who": "auditor",
+      "call": "step(\"audit_0\")",
+      "value": "0",
+      "hash": "0x749c195668a88b472862bd6d1f23e7e1864479acc6699b72438d71df6e54e5d9",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "running"
+    },
+    {
+      "who": "bystander",
+      "call": "step(\"audit_0\")",
+      "value": "0",
+      "hash": "0x182e801aee7b2f6952a325df09dd75884b5828dee3bd7246bf588225bf272077",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "running"
+    },
+    {
+      "who": "auditor",
+      "call": "step(\"audit_0\")",
+      "value": "0",
+      "hash": "0xdfdc6b428b5c32437ae3fbf333f7c7ebf85c03e45c295039811eabcc6811a96e",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "running"
+    },
+    {
+      "who": "bystander",
+      "call": "step(\"audit_0\")",
+      "value": "0",
+      "hash": "0xcc4dab68aeb52ab1b6e7880f4f5d486776f610d3fb82de60c562f5c2b80932cb",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "running"
+    },
+    {
+      "who": "auditor",
+      "call": "step(\"audit_0\")",
+      "value": "0",
+      "hash": "0x97050b0154dcbc13e5b99fe8dfd5267e9ef28a79b067c5b041a4e555bfad85dd",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "done"
+    },
+    {
+      "who": "auditor",
+      "call": "recheck(\"audit_0\", \"6216211004\")",
+      "value": "0",
+      "hash": "0x0f85ea19686f229a1ab943005a505ef28c7fdb8c9ab23e6fb1d80621281b18b9",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "no_range"
+    },
+    {
+      "who": "bystander",
+      "call": "recheck(\"audit_0\", \"6216211004\")",
+      "value": "0",
+      "hash": "0x476578b7a05a4cc3b73e3c2d9d5f09e2efceda148db811449d89c7d11725e15d",
+      "status": "ACCEPTED",
+      "exec": "ERROR",
+      "refused": "This posting has already been read again"
+    },
+    {
+      "who": "auditor",
+      "call": "open_audit(\"program_0\", \"greenhouse\", \"figma\")",
+      "value": "0",
+      "hash": "0x810f6324026e5d595858060a2ba8304f700d872ba0988065e05212a826af77e7",
+      "status": "ACCEPTED",
+      "exec": "ERROR",
+      "refused": "audit_0 audited this board on 2026-11-02; audit it again after 7 days"
+    },
+    {
+      "who": "auditor",
+      "call": "open_audit(\"program_0\", \"ashby\", \"supabase\")",
+      "value": "0",
+      "hash": "0x9d276c5b486eaefa09f0a5b825204bc15b137186798184ac02bb6e273af12570",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "audit_1"
+    },
+    {
+      "who": "auditor",
+      "call": "step(\"audit_1\")",
+      "value": "0",
+      "hash": "0x565ef89f115d9b4df629e2c0b1313df46f515699bc9fa29d11618676f72c3bbb",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "running"
+    },
+    {
+      "who": "auditor",
+      "call": "step(\"audit_1\")",
+      "value": "0",
+      "hash": "0xa9c9d113d7b5437dcdd2ade8eed0079f305034412ce62f628270fe2d85ec85fa",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "done"
+    },
+    {
+      "who": "bystander",
+      "call": "open_audit(\"program_0\", \"ashby\", \"linear\")",
+      "value": "0",
+      "hash": "0x78e46a243395d6efb59497aea7ad17e03a0860e45efb82de9af0b3295d4aec6e",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "audit_2"
+    },
+    {
+      "who": "bystander",
+      "call": "step(\"audit_2\")",
+      "value": "0",
+      "hash": "0xbbb0ec90c6fffc3199fd6179f64449c9c2cd87b0bf2701f5bf3d759a0be57fba",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "done"
+    },
+    {
+      "who": "auditor",
+      "call": "open_audit(\"program_0\", \"greenhouse\", \"airtable\")",
+      "value": "0",
+      "hash": "0xa16921784e7669f5b04f9c6b7c00e9a3bc319801bd0b7bb58abe4976e642fd8c",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "audit_3"
+    },
+    {
+      "who": "bystander",
+      "call": "open_audit(\"program_0\", \"greenhouse\", \"asana\")",
+      "value": "0",
+      "hash": "0xf8c7dc91ba7b3b0cb522c9104c1f1f5e13a0f7087251413cfd5cc408e709775a",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "audit_4"
+    },
+    {
+      "who": "bystander",
+      "call": "step(\"audit_4\")",
+      "value": "0",
+      "hash": "0xb8ed6c1a0c74a24a0a9cfd050b6a12958c0a23f72700593131c08a31b7f0845a",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "running"
+    },
+    {
+      "who": "bystander",
+      "call": "step(\"audit_4\")",
+      "value": "0",
+      "hash": "0x3dcb6c97daa14c718cd8a92ab2015452f8a0fe75b14d60d2cb3cebe179f40ad6",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "running"
+    },
+    {
+      "who": "bystander",
+      "call": "step(\"audit_4\")",
+      "value": "0",
+      "hash": "0x61b773496be99b619bc124075c602536d05157ea5f775bcd8740c62b92603295",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "running"
+    },
+    {
+      "who": "bystander",
+      "call": "step(\"audit_4\")",
+      "value": "0",
+      "hash": "0x9dc3cef1c15b3c8de6d136e69e15134ff5772ef6a5c383b626f5d3b41427516c",
+      "status": "ACCEPTED",
+      "exec": "SUCCESS",
+      "returned": "done"
+    },
+    {
+      "who": "bystander",
+      "call": "close(\"program_0\")",
+      "value": "0",
+      "hash": "0xd20fa4eff7aef843e3368197cac3d6a3bba07194af7fc6ab42ac0e413a8d1da7",
+      "status": "ACCEPTED",
+      "exec": "ERROR",
+      "refused": "Audit steps are paid until 2027-01-01"
+    }
+  ]
+}
