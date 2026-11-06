@@ -74,7 +74,22 @@ Every step, packet hash, validator vote and balance reconciliation is in [`docs/
 
 ### Bradbury testnet
 
-BRADBURY_RUN
+`scripts/demo-bradbury.mjs` (2026-11-06) ran a demo program from three test wallets on Bradbury Phase 2. All 16 transactions were
+decided by five independent validators, **every one unanimously** (5 of 5 votes), in a median of 33 seconds (at most 139 s for a step
+that read 25 Ashby postings and their pay passages).
+
+| Employer (board) | Postings read | In pay-transparency places | Show pay | No pay shown | Score | Steps |
+|---|---|---|---|---|---|---|
+| [Airtable](https://job-boards.greenhouse.io/airtable) (Greenhouse) | 5 | 4 | 4 | 0 | **100%** | 1 |
+| [Linear](https://jobs.ashbyhq.com/linear) (Ashby) | 32 | 18 | 13 | **5** | **72.2%** | 2 |
+| [Discord](https://job-boards.greenhouse.io/discord) (Greenhouse) | 27 | 23 | 22 | **1** | **95.7%** | 2 |
+
+The five "North America" Linear postings without pay match the Studio run of the same day; one of them ("Developer Relations") was
+read again on request and still shows none. Discord's "Senior Staff Brand Designer" (San Francisco Bay Area) is the one posting
+there without Greenhouse's pay field. Refused as designed, each by all five validators: a program ending on 2026-02-31 (its 0.5 GEN
+credited back, then withdrawn by the sponsor), a second withdraw with nothing left, a 0.05 GEN top-up (credited back), a Lever board,
+a second audit of Linear within a week, and a second fresh reading of the same posting. Both auditors withdrew their 0.15 GEN of step
+rewards through the prepaid transfer, and `totals()` matched the contract's balance at all four checkpoints.
 
 ### GenLayer Studio (v2, 2026-11-06)
 

@@ -10,6 +10,76 @@ pay-in-posting laws, plus US-remote jobs under Colorado's), read listed pay in c
 In v2 every GEN that leaves the contract goes through `withdraw`, to the caller; rewards, refused payments and returned shares
 are credited first. The v1 run is in [docs/v1/REPRODUCTION.md](v1/REPRODUCTION.md).
 
+## Bradbury testnet (Phase 2, chain 4221)
+
+Contract [`0xae3C8CfC29CDf8842EEadd3F51E88684C47918d7`](https://explorer-bradbury.genlayer.com/address/0xae3C8CfC29CDf8842EEadd3F51E88684C47918d7), source `contracts/pay_clear.bradbury.py`. Accounts:
+sponsor `0xDe19AD65B1155CafB2C7133bdBcf3076683c8a22`, auditorA `0x1cfF3f6F0E1aeA4665D1E133372171637e6f0Fc2`, auditorB `0x463Dc91Ce7fFDDade35866d89E0a4EbA410f62d6`.
+
+### Audits
+
+| Audit | Employer | Board | Read | In scope | Show pay | No pay shown | Unverified | Unclear | Score | Steps |
+|---|---|---|---|---|---|---|---|---|---|---|
+| audit_0 | [Airtable](https://job-boards.greenhouse.io/airtable) | greenhouse | 5 | 4 | 4 | **0** | 0 | 0 | 100.0% | 1 |
+| audit_1 | [linear](https://jobs.ashbyhq.com/linear) | ashby | 32 | 18 | 13 | **5** | 0 | 0 | 72.2% | 2 |
+| audit_2 | [Discord](https://job-boards.greenhouse.io/discord) | greenhouse | 27 | 23 | 22 | **1** | 0 | 0 | 95.7% | 2 |
+
+### Postings with no pay shown
+
+| Audit | Employer | Posting | Location | Jurisdictions | Note |
+|---|---|---|---|---|---|
+| audit_1 | linear | [Developer Relations](https://jobs.ashbyhq.com/linear/1d652292-04d9-405c-8101-578efd020e94) | North America / Europe | US-REMOTE | read again, still none |
+| audit_1 | linear | [Production Designer](https://jobs.ashbyhq.com/linear/b32de590-06ce-47d4-8994-66b936df908d) | North America / Europe | US-REMOTE |  |
+| audit_1 | linear | [Senior / Staff Product Engineer, Applied AI](https://jobs.ashbyhq.com/linear/b4a7764e-c680-4bdf-9956-dc78f2ca94d5) | North America | US-REMOTE |  |
+| audit_1 | linear | [Senior / Staff Fullstack Engineer](https://jobs.ashbyhq.com/linear/cd5ae036-0223-427a-b038-ba16ef9dcb32) | North America | US-REMOTE |  |
+| audit_1 | linear | [Creative Producer](https://jobs.ashbyhq.com/linear/f16dd5e9-ed10-4b8e-b5d7-1b8b5e3f002f) | North America / Europe | US-REMOTE |  |
+| audit_2 | Discord | [Senior Staff Brand Designer](https://job-boards.greenhouse.io/discord/jobs/8933480002) | San Francisco Bay Area | CA |  |
+
+### Steps
+
+| Step | At (UTC) | By | Read | Paid | packet | results |
+|---|---|---|---|---|---|---|
+| audit_0 #1 | 2026-11-06T20:52:49 | `0x1cfF3f6F0E1aeA4665D1E133372171637e6f0Fc2` | 5 | 0.05 GEN | `55bbf118e5aa475031239c015a717c5397f8a85412e789ea1a997cb0d4a069c8` | `875c5760d77556585413c146dc814c448fad028aabcebf95e026659963a56df4` |
+| audit_1 #1 | 2026-11-06T20:53:42 | `0x463Dc91Ce7fFDDade35866d89E0a4EbA410f62d6` | 25 | 0.05 GEN | `8e379a9eaca08570e2ec70617dcfc989a1852de6a5defd26b5035ff5e5d32609` | `f01be750775f3e8989c8705d8d94b25a51e7205514e68cef01d3f6a9a03e1ad2` |
+| audit_1 #2 | 2026-11-06T20:54:48 | `0x463Dc91Ce7fFDDade35866d89E0a4EbA410f62d6` | 7 | 0.05 GEN | `0cda22e2220445e320b71cc9b43c9960e01581335e13f05dee8567b46c7ef496` | `1ae76c3dbcaf18355f3655858ff498fb1c1deb174b2a741e35c689f1f4f74f4a` |
+| audit_2 #1 | 2026-11-06T20:57:16 | `0x1cfF3f6F0E1aeA4665D1E133372171637e6f0Fc2` | 25 | 0.05 GEN | `09a36c6265dc4080f883ba94f3be6b69471f353efa37c5b9deadba9688b5ace1` | `f0ffe17be914476e7b8df6a08fb1ea453fe7c089242dd92534fdb0eeb1b2b370` |
+| audit_2 #2 | 2026-11-06T20:57:58 | `0x1cfF3f6F0E1aeA4665D1E133372171637e6f0Fc2` | 2 | 0.05 GEN | `11a5c75b36583ec2adf9726573be98799c3c3756be3f9a9c2676bf095f5fcbf5` | `48096576256914c58ae1beed99dd8c3119f15a983a7e52d9f8fcb6dcf31afebf` |
+
+### Balance reconciliation
+
+`totals()` (open program pots plus GEN credited and not yet withdrawn) against the contract's on-chain balance, after every
+transfer had finalized:
+
+| Point | Expected | Contract balance | Match |
+|---|---|---|---|
+| after a refused program: its GEN is credited to the sponsor | 0.5 GEN | 0.5 GEN | yes |
+| after the sponsor withdrew | 0 GEN | 0 GEN | yes |
+| after the audits: step rewards are credited | 2.05 GEN | 2.05 GEN | yes |
+| end of run, after the auditors withdrew | 1.75 GEN | 1.75 GEN | yes |
+
+Withdrawals: auditorA was credited 0.15 GEN and its wallet balance rose by 0.2498 GEN; auditorB was credited 0.15 GEN and its wallet balance rose by 0.1499 GEN.
+
+
+### Every transaction
+
+| Who | Call | GEN | Decision | Execution | Validator votes | Seconds | Tx |
+|---|---|---|---|---|---|---|---|
+| sponsor | `create_program("US pay transparency on Bradbury", "2026-02-31", "50000000000000000", 40)` | 0.5000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 34 | [`0x9a03b25e…`](https://explorer-bradbury.genlayer.com/tx/0x9a03b25e25d5099794096f4ed096ec476bdf72393aec6dbb4d1581f58ab9bdef) |
+| sponsor | `withdraw()` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 32 | [`0x76564037…`](https://explorer-bradbury.genlayer.com/tx/0x7656403796b82d150e5ae5d819cd7be9e7833f60a516d3e738fcaca79be01659) |
+| sponsor | `withdraw()` | 0.0000 | ACCEPTED | ERROR | ERROR / ERROR / ERROR / ERROR / ERROR | 33 | [`0xe0da6890…`](https://explorer-bradbury.genlayer.com/tx/0xe0da6890a21072c222ed5f2f1a8f7ce74e98c0a66b7fc66316c4a6060e6fba12) |
+| sponsor | `create_program("US pay transparency on Bradbury", "2027-01-05", "50000000000000000", 40)` | 2.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 91 | [`0x890c7f94…`](https://explorer-bradbury.genlayer.com/tx/0x890c7f94189d6b09291075f78bdf1814bf2115047b5cb14ab35945df2a7815b6) |
+| auditorB | `fund("program_0")` | 0.0500 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 39 | [`0x7a679528…`](https://explorer-bradbury.genlayer.com/tx/0x7a67952896aae3beb549e2955e0487134f8a7adabec8ff8501def049d94ea0bc) |
+| auditorA | `open_audit("program_0", "lever", "figma")` | 0.0000 | ACCEPTED | ERROR | ERROR / ERROR / ERROR / ERROR / ERROR | 26 | [`0xc1e0cc4c…`](https://explorer-bradbury.genlayer.com/tx/0xc1e0cc4c3aa112fb25953bac2ae86612384337013c7b6c6c6bca91c1e64862ab) |
+| auditorA | `open_audit("program_0", "greenhouse", "airtable")` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 42 | [`0x9a459eba…`](https://explorer-bradbury.genlayer.com/tx/0x9a459eba97e54f1ba17e21e1506f309c6ca9202b4182afd0ad0cfd1dc6d4daff) |
+| auditorB | `open_audit("program_0", "ashby", "linear")` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 55 | [`0x50037853…`](https://explorer-bradbury.genlayer.com/tx/0x50037853158009ce1de2f86445df7a395bc5f0dd73cd674ae2997b272e920a30) |
+| auditorB | `step("audit_1")` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 139 | [`0xd31cdb24…`](https://explorer-bradbury.genlayer.com/tx/0xd31cdb2478b7fe93e5ad105df0e7573df4c5db983c4b432ef2d8eea65146187a) |
+| auditorA | `open_audit("program_0", "greenhouse", "discord")` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 33 | [`0x4d3f84d0…`](https://explorer-bradbury.genlayer.com/tx/0x4d3f84d0be5522361f320ac26b92b8742fd5ca7bc178a030e70c207876bed0d4) |
+| auditorA | `step("audit_2")` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 32 | [`0x69f0c966…`](https://explorer-bradbury.genlayer.com/tx/0x69f0c966b4cc8a8fac638ea1bf17dec50fb8e72a5e7cd0583ecb69ddd48bea59) |
+| auditorB | `open_audit("program_0", "ashby", "linear")` | 0.0000 | ACCEPTED | ERROR | ERROR / ERROR / ERROR / ERROR / ERROR | 40 | [`0x5ed32492…`](https://explorer-bradbury.genlayer.com/tx/0x5ed324923e5e27916c5f17959f710debc22fb43918efeca9f0fd09c27d5339f4) |
+| auditorA | `recheck("audit_1", "1d652292-04d9-405c-8101-578efd020e94")` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 26 | [`0x83a0485e…`](https://explorer-bradbury.genlayer.com/tx/0x83a0485e43787ef08af046257318084d7bfd14208153f721be3d456c4fb91efc) |
+| auditorB | `recheck("audit_1", "1d652292-04d9-405c-8101-578efd020e94")` | 0.0000 | ACCEPTED | ERROR | ERROR / ERROR / ERROR / ERROR / ERROR | 26 | [`0xfc92b08c…`](https://explorer-bradbury.genlayer.com/tx/0xfc92b08cc1caf6a4ccfe324c0a39f6d85164dd55334bbcc32ed9d186d4afc1cc) |
+| auditorA | `withdraw()` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 32 | [`0x65e5a37a…`](https://explorer-bradbury.genlayer.com/tx/0x65e5a37aba2ac327a1cc4003c27acd3642490d26c442fb081bfa027812850bcb) |
+| auditorB | `withdraw()` | 0.0000 | ACCEPTED | RETURN | RETURN / RETURN / RETURN / RETURN / RETURN | 23 | [`0x82e4b397…`](https://explorer-bradbury.genlayer.com/tx/0x82e4b39792377080db7361283b170ae5f03c01d92d57ff334e051479ff09a5d8) |
+
 ## GenLayer Studio
 
 Contract [`0x6dEc38B51C07120b910fe6b0a6c07b3Cf92A238D`](https://explorer-studio.genlayer.com/address/0x6dEc38B51C07120b910fe6b0a6c07b3Cf92A238D), source `contracts/pay_clear.py`. Accounts:
