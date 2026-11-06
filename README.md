@@ -70,27 +70,32 @@ where Bradbury required it:
 
 ## Verified live, on real job boards
 
-`scripts/demo.mjs` funded a demo program with test wallets and audited real boards. Every step, packet hash and the balance
-reconciliation are in [`docs/REPRODUCTION.md`](docs/REPRODUCTION.md).
+Every step, packet hash, validator vote and balance reconciliation is in [`docs/REPRODUCTION.md`](docs/REPRODUCTION.md).
 
-| Employer (board) | Postings read | In pay-transparency places | Show pay | No pay shown | Score | What it shows |
-|---|---|---|---|---|---|---|
-| [Figma](https://job-boards.greenhouse.io/figma) (Greenhouse) | 140 | 94 | 93 | **1** | **98.9%** | 93 postings carry Greenhouse's pay-range field; "Brand Designer, Web" (San Francisco, New York, US remote) has none. Read again on request: still none. Offices abroad are out of scope |
-| [Supabase](https://jobs.ashbyhq.com/supabase) (Ashby) | 68 | 5 | 1 | **4** | **20%** | Most postings are outside the US. The US ones mention "Over $1B raised": validators read that as funding, not pay |
-| [Linear](https://jobs.ashbyhq.com/linear) (Ashby) | 31 | 17 | 0 | **17** | **0%** | 17 "North America" remote postings, none with pay; remote US jobs fall under Colorado's law |
-| [Airtable](https://job-boards.greenhouse.io/airtable) (Greenhouse) | 5 | 4 | 4 | 0 | **100%** | Pay ranges written in the text of each ad, read by the validators |
-| [Asana](https://www.asana.com/jobs) (Greenhouse, own career site) | 110 | 47 | 47 | 0 | **100%** | Every US posting states its range in the text; the public pages are Asana's own site, which matters only when no range is found |
+### Bradbury testnet
 
-The audits ran in 17 steps of up to 25 postings, run by two test wallets and paid 0.05 GEN each from the program's pot. Also refused,
-with the GEN sent back: a program ending on 2026-02-31, a reward below 0.01 GEN, a cap of 0 steps, a pot below 0.1 GEN and a 0.05 GEN
-top-up. And refused by the contract: a Lever board (only Greenhouse and Ashby), a board that does not exist, a second audit of a board
-while one is running, a second audit of the same board within a week, a second fresh reading of the same posting, and closing the
-program before its last day. The contract's balance was reconciled with `totals()` at three points of the run, each time after every
-transfer had finalized.
+BRADBURY_RUN
 
-**From the live app with MetaMask:** a tester read `greenhouse/discord` in the wallet-free checker, opened an on-chain audit, ran the
-second step that finished it (41 postings: 35 in scope, 33 with Greenhouse's pay field and 2 with a range in the ad's text, score 100%),
-was paid 0.05 GEN for each step, and asked for a fresh reading of one posting ([wallet test](docs/REPRODUCTION.md#wallet-test-from-the-live-app)).
+### GenLayer Studio (v2, 2026-11-06)
+
+`scripts/demo.mjs` funded a demo program with test wallets and audited the same five boards as the v1 run, three days later.
+
+| Employer (board) | Postings read | In pay-transparency places | Show pay | No pay shown | Score | v1 (11-02) | What changed |
+|---|---|---|---|---|---|---|---|
+| [Figma](https://job-boards.greenhouse.io/figma) (Greenhouse) | 143 | 93 | 93 | 0 | **100%** | 98.9% | "Brand Designer, Web", the one posting without pay in v1, now lists $127,000-$269,000 in Greenhouse's pay field |
+| [Supabase](https://jobs.ashbyhq.com/supabase) (Ashby) | 69 | 5 | 1 | **4** | **20%** | 20% | Unchanged: the US postings still say "Over $1B raised", which validators read as funding, not pay |
+| [Linear](https://jobs.ashbyhq.com/linear) (Ashby) | 31 | 18 | 13 | **5** | **72.2%** | 0% | 11 postings now display Ashby compensation and 2 state a range in the text; 5 "North America" postings still show none |
+| [Airtable](https://job-boards.greenhouse.io/airtable) (Greenhouse) | 5 | 4 | 4 | 0 | **100%** | 100% | 3 now use Greenhouse's pay field, 1 states it in the ad |
+| [Asana](https://www.asana.com/jobs) (Greenhouse, own career site) | 110 | 44 | 44 | 0 | **100%** | 100% | Every US posting states its range in the text |
+
+17 steps of up to 25 postings, run by two test wallets; each paid step credited 0.05 GEN. Refused and credited back: a program ending
+on 2026-02-31, a reward below 0.01 GEN, a cap of 0 steps, a pot below 0.1 GEN and a 0.05 GEN top-up; the sponsor withdrew the 6.05 GEN
+in one call, and a second withdraw was refused (nothing left). Refused by the contract: a Lever board, a board that does not exist, a
+second audit of a board while one is running or within a week, a second fresh reading of a posting, and closing before the last day.
+The auditors withdrew 0.40 and 0.50 GEN and their wallets rose by exactly that. `totals()` (pots plus credited GEN) matched the
+contract's balance at all four checkpoints.
+
+The v1 run (2026-11-02, with a MetaMask test from the live app) is in [`docs/v1/REPRODUCTION.md`](docs/v1/REPRODUCTION.md).
 
 ## Who can do what (and the attacks this blocks)
 
