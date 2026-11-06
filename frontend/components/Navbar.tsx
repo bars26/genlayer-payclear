@@ -5,6 +5,7 @@ import { AccountPanel } from "./AccountPanel";
 import { BrandMark } from "./BrandMark";
 import { FaucetButton } from "./FaucetButton";
 import { NetworkSwitch } from "./NetworkSwitch";
+import { WrongNetwork } from "./WrongNetwork";
 import { Button } from "./ui/button";
 
 export function Navbar({ onCreate }: { onCreate: () => void }) {
@@ -17,6 +18,7 @@ export function Navbar({ onCreate }: { onCreate: () => void }) {
         </a>
         <div className="flex items-center gap-2 sm:gap-3">
           <NetworkSwitch />
+          <WrongNetwork />
           <FaucetButton />
           <Button size="sm" onClick={onCreate}>
             <Plus className="w-4 h-4" />

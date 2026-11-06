@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
 import PayClear, { type CreateProgramInput, type TxProgress, type TxResult } from "../contracts/PayClear";
 import { formatGen, sameAddress, todayUtc, type Audit, type Program } from "../contracts/types";
+import { isOnGenLayerNetwork, switchToGenLayerNetwork } from "../genlayer/client";
 import { useWallet } from "../genlayer/wallet";
 import { currentNetwork } from "../network";
 import { TxError, classifyError } from "../utils/errors";
@@ -152,6 +153,14 @@ export function usePayClearWrite() {
       try {
         if (!contract) throw new TxError({ kind: "unknown", phase: "send", message: "The contract address is not configured." });
         if (!address) throw new TxError({ kind: "wallet_missing", phase: "send", message: "No wallet is connected." });
+        // A wallet that was already connected keeps whatever chain it was on: ask MetaMask to switch first.
+        if (!(await isOnGenLayerNetwork())) {
+          try {
+            await switchToGenLayerNetwork();
+          } catch (err) {
+            throw classifyError(err, "send");
+          }
+        }
 
         let result: TxResult;
         const bradbury = contract.network.id === "bradbury";

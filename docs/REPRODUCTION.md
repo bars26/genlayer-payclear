@@ -58,6 +58,15 @@ transfer had finalized:
 
 Withdrawals: auditorA was credited 0.15 GEN and its wallet balance rose by 0.2498 GEN; auditorB was credited 0.15 GEN and its wallet balance rose by 0.1499 GEN.
 
+### Wallet test from the live app
+
+A tester switched MetaMask to Bradbury (chain 4221), read greenhouse/dropbox in the wallet-free checker, opened an on-chain audit and ran its second step (33 postings: 14 in scope, all 14 with Greenhouse's pay field, score 100%), was credited 0.05 GEN per step, and withdrew the 0.10 GEN. Each transaction was FINALIZED with all five validators voting FINISHED_WITH_RETURN. Wallet `0x4F80B5C475fCED34fc9A07FFccF39E1aDC1406bf`.
+
+| Step | GEN sent | Result | Tx |
+|---|---|---|---|
+| open_audit(program_0, greenhouse, dropbox): first 25 postings | 0 | FINALIZED, 5/5, audit_3 opened, 0.05 GEN credited | [`0x28322112…`](https://explorer-bradbury.genlayer.com/tx/0x28322112f6fa8ba099f0b522e65806b7ec29eef6055b601eb032c3c4e01acbb6) |
+| step(audit_3): last 8 postings | 0 | FINALIZED, 5/5, audit done, 0.05 GEN credited | [`0x2c88b662…`](https://explorer-bradbury.genlayer.com/tx/0x2c88b66218f428e7d88d80d3e72d110ba5b91d170cbe1144add15f30058758f4) |
+| withdraw() with the prepaid transfer fee | 0 | FINALIZED, 5/5, 0.10 GEN sent to the wallet | [`0xbd6551c3…`](https://explorer-bradbury.genlayer.com/tx/0xbd6551c3f17c5850502270bf9a6e3b0fd09b778158bb29be472dbc38a8e0b1fe) |
 
 ### Every transaction
 
