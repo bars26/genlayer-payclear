@@ -7,9 +7,7 @@ from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from tests.direct.conftest import to_hex
-
-CONTRACT_PATH = "contracts/pay_clear.py"
+from tests.direct.conftest import CONTRACT_PATH, llm_json, to_hex
 GEN = 10**18
 GH = "https://boards-api.greenhouse.io/v1/boards"
 ASHBY = "https://api.ashbyhq.com/posting-api/job-board"
@@ -46,22 +44,23 @@ def _setup(direct_vm, jobs=None, board="figma", status=200, answers=("RANGE", "N
     _mock(direct_vm, f"{GH}/{board}/jobs?content=true&pay_transparency=true", {"jobs": JOBS if jobs is None else jobs}, status)
     if ashby is not None:
         _mock(direct_vm, f"{ASHBY}/{board}?includeCompensation=true", {"jobs": ashby, "apiVersion": "1"}, status)
-    direct_vm.mock_llm(r"For each numbered job posting", json.dumps({"answers": list(answers)}))
+    direct_vm.mock_llm(r"For each numbered job posting", llm_json({"answers": list(answers)}))
 
 
 def _payments(contract, monkeypatch):
-    """Record every GEN transfer the contract makes instead of sending it."""
+    """Record every GEN transfer the contract makes instead of sending it (GEN only leaves through `withdraw`)."""
     sent = []
-
-    class Recorder:
-        def __init__(self, to):
-            self.to = to
-
-        def emit_transfer(self, value):
-            sent.append((self.to.as_hex, int(value)))
-
-    monkeypatch.setattr(sys.modules[type(contract).__module__], "_Wallet", Recorder)
+    monkeypatch.setattr(sys.modules[type(contract).__module__], "_send", lambda to, amount: sent.append((to.as_hex, int(amount))))
     return sent
+
+
+def _owed(contract, who):
+    return int(contract.owed_to(to_hex(who)))
+
+
+def _withdraw(direct_vm, contract, who):
+    direct_vm.sender = who
+    return int(contract.withdraw())
 
 
 def _program(direct_vm, direct_deploy, sponsor, fund=GEN, reward=GEN // 20, per_auditor=10, ends=None):
@@ -94,7 +93,7 @@ def test_a_program_freezes_its_terms(direct_vm, direct_deploy, direct_alice):
     contract, pid = _program(direct_vm, direct_deploy, direct_alice)
     p = contract.get_program(pid)
     assert (pid, p.title, int(p.reward), int(p.per_auditor), int(p.pot), int(p.n_funders)) == ("program_0", "US pay transparency 2026", GEN // 20, 10, GEN, 1)
-    assert json.loads(contract.totals()) == {"expected_balance": str(GEN)}
+    assert json.loads(contract.totals()) == {"expected_balance": str(GEN), "owed": "0", "withdrawn": "0"}
     assert "Colorado" in json.loads(contract.laws())["CO"]
 
 
@@ -113,8 +112,12 @@ def test_invalid_programs_are_refunded_in_full(direct_vm, direct_deploy, direct_
     direct_vm.value = fund
     title, ends, reward, cap = args
     result = contract.create_program(title, ends or _days_from_now(30), reward, cap)
+    direct_vm.value = 0
     assert result.startswith("REFUNDED: ") and reason in result
-    assert sent == [(to_hex(direct_alice), fund)] and int(contract.program_count) == 0
+    assert sent == [] and _owed(contract, direct_alice) == fund and int(contract.program_count) == 0
+    assert json.loads(contract.totals())["expected_balance"] == str(fund)
+    assert _withdraw(direct_vm, contract, direct_alice) == fund
+    assert sent == [(to_hex(direct_alice), fund)] and _owed(contract, direct_alice) == 0
 
 
 def test_anyone_funds_with_at_least_a_tenth_of_a_gen(direct_vm, direct_deploy, direct_alice, direct_bob):
@@ -122,7 +125,8 @@ def test_anyone_funds_with_at_least_a_tenth_of_a_gen(direct_vm, direct_deploy, d
     direct_vm.sender, direct_vm.value = direct_bob, GEN
     assert contract.fund(pid) == "funded"
     direct_vm.value = GEN // 20
-    assert contract.fund(pid) == "REFUNDED: Send at least 0.1 GEN to fund the program"
+    assert contract.fund(pid).startswith("REFUNDED: Send at least 0.1 GEN to fund the program")
+    assert _owed(contract, direct_bob) == GEN // 20
     assert [r["address"] for r in json.loads(contract.get_funders(pid, 0, 200))] == [to_hex(direct_alice), to_hex(direct_bob)]
 
 
@@ -145,7 +149,8 @@ def test_an_audit_classifies_each_posting(direct_vm, direct_deploy, direct_alice
                                            "url": "https://job-boards.greenhouse.io/figma/jobs/1003"}]
     assert json.loads(contract.score(aid)) == {"state": "done", "read": 5, "in_scope": 4, "show_pay": 2, "missing": 1,
                                                "unverified": 1, "unclear": 0, "score_bp": 6666}
-    assert sent == [(to_hex(direct_bob), GEN // 20)]  # the step was paid to whoever ran it
+    assert sent == [] and _owed(contract, direct_bob) == GEN // 20  # the step was credited to whoever ran it
+    assert _withdraw(direct_vm, contract, direct_bob) == GEN // 20 and sent == [(to_hex(direct_bob), GEN // 20)]
     step = json.loads(a.steps_json)[0]
     assert (step["read"], step["paid"], step["by"]) == (5, str(GEN // 20), to_hex(direct_bob))
 
@@ -177,7 +182,7 @@ def test_a_big_board_is_read_in_bounded_steps_and_each_step_is_paid(direct_vm, d
     assert contract.step(aid) == "done"
     a = contract.get_audit(aid)
     assert (int(a.n_read), int(a.n_steps), int(a.n_scope), int(a.n_listed)) == (60, 3, 30, 30)
-    assert sent == [(to_hex(direct_bob), GEN // 20)] * 2 + [(to_hex(direct_charlie), GEN // 20)]
+    assert (_owed(contract, direct_bob), _owed(contract, direct_charlie), sent) == (2 * (GEN // 20), GEN // 20, [])
     with direct_vm.expect_revert("is already done"):
         contract.step(aid)
     assert len(json.loads(contract.get_results(aid, 0, 200))) == 60
@@ -205,7 +210,7 @@ def test_steps_are_unpaid_once_the_cap_or_the_pot_runs_out_and_never_paid_to_a_f
     direct_vm.sender = direct_bob
     contract.step(aid)  # paid: the pot had exactly one reward
     contract.step(aid)  # the pot is empty: the step still runs, unpaid
-    assert sent == [(to_hex(direct_bob), GEN // 10)]
+    assert (_owed(contract, direct_bob), _owed(contract, direct_alice), sent) == (GEN // 10, 0, [])
     assert [s["paid"] for s in json.loads(contract.get_audit(aid).steps_json)] == ["0", str(GEN // 10), "0"]
     assert contract.get_audit(aid).state == "done" and int(contract.get_program(pid).pot) == 0
 
@@ -324,7 +329,11 @@ def test_close_returns_the_pot_pro_rata(direct_vm, direct_deploy, direct_alice, 
     with direct_vm.expect_revert("already been returned"):
         contract.refund(pid, to_hex(direct_alice))
     assert contract.refund(pid, to_hex(direct_bob)) == str(returnable - returnable // 2)
-    assert sum(a for _, a in sent) == 2 * GEN and json.loads(contract.totals())["expected_balance"] == "0"
+    assert sent == [] and json.loads(contract.totals())["expected_balance"] == str(2 * GEN)
+    for who in (direct_alice, direct_bob, direct_charlie):
+        _withdraw(direct_vm, contract, who)
+    assert sum(a for _, a in sent) == 2 * GEN and {t for t, _ in sent} == {to_hex(w) for w in (direct_alice, direct_bob, direct_charlie)}
+    assert json.loads(contract.totals()) == {"expected_balance": "0", "owed": "0", "withdrawn": str(2 * GEN)}
 
 
 def test_stress_hundreds_of_funders_still_close_and_repay_everyone(direct_vm, direct_deploy, direct_alice, monkeypatch):
@@ -345,5 +354,61 @@ def test_stress_hundreds_of_funders_still_close_and_repay_everyone(direct_vm, di
     rows = json.loads(contract.get_funders(pid, 0, 200)) + json.loads(contract.get_funders(pid, 200, 200))
     for row in rows:
         contract.refund(pid, row["address"])
-    assert len(rows) == 301 and sum(a for _, a in sent) == funded
-    assert json.loads(contract.totals()) == {"expected_balance": "0"}
+    assert len(rows) == 301 and json.loads(contract.totals())["owed"] == str(funded)
+    for row in rows:
+        direct_vm.sender = bytes.fromhex(row["address"][2:])
+        contract.withdraw()
+    assert sum(a for _, a in sent) == funded and len(sent) == 301
+    assert json.loads(contract.totals()) == {"expected_balance": "0", "owed": "0", "withdrawn": str(funded)}
+
+
+# --- withdrawing ---------------------------------------------------------------
+
+
+def test_gen_only_leaves_through_withdraw_to_the_caller(direct_vm, direct_deploy, direct_alice, direct_bob, direct_charlie, monkeypatch):
+    contract, pid = _program(direct_vm, direct_deploy, direct_alice)
+    sent = _payments(contract, monkeypatch)
+    _open(direct_vm, contract, direct_bob)
+    direct_vm.sender = direct_charlie
+    with direct_vm.expect_revert("Nothing to withdraw"):
+        contract.withdraw()  # charlie earned nothing and cannot take bob's reward
+    assert _withdraw(direct_vm, contract, direct_bob) == GEN // 20
+    with direct_vm.expect_revert("Nothing to withdraw"):
+        contract.withdraw()  # a second withdraw has nothing left
+    assert sent == [(to_hex(direct_bob), GEN // 20)]
+    assert json.loads(contract.totals()) == {"expected_balance": str(GEN - GEN // 20), "owed": "0", "withdrawn": str(GEN // 20)}
+
+
+# --- consensus -----------------------------------------------------------------
+
+
+def _reading(codes, asked=None, **extra):
+    results = [{"id": str(i), "title": f"Role {i}", "states": ["NY"], "code": c} for i, c in enumerate(codes)]
+    out = {"state": "ok", "employer": "Figma", "board_size": len(codes), "more": False, "packet": {"read": [r["id"] for r in results]},
+           "results": results, "llm": [str(i) for i in range(len(codes))] if asked is None else asked}
+    out.update(extra)
+    return out
+
+
+def test_validators_agree_on_code_exactly_and_on_the_models_reading_but_one_in_ten(direct_vm, direct_deploy, direct_alice):
+    direct_vm.sender = direct_alice
+    same = _module(direct_deploy(CONTRACT_PATH)).same_reading
+    ten = ["range_text"] * 10
+    assert same(_reading(ten), _reading(["no_range"] + ten[1:]))  # one wavering answer in ten
+    assert not same(_reading(ten), _reading(["no_range", "unclear"] + ten[2:]))  # two are too many
+    five = ["range_text"] * 5
+    assert not same(_reading(five), _reading(["no_range"] + five[1:]))  # under ten, every answer must match
+    assert not same(_reading(five, asked=[]), _reading(["range_listed"] + five[1:], asked=[]))  # code-decided: exact
+    assert not same(_reading(ten), _reading(ten, board_size=11))  # the board itself must match
+    assert not same(_reading(ten), _reading(ten, asked=["0"]))  # the same postings went to the model
+    assert same({"state": "error"}, {"state": "error"}) and not same({"state": "error"}, _reading(ten))
+    assert same({"state": "unreadable"}, {"state": "unreadable"}) and not same({"state": "none"}, {"state": "error"})
+
+
+def test_an_unusable_model_answer_refuses_the_step(direct_vm, direct_deploy, direct_alice, direct_bob):
+    contract, _ = _program(direct_vm, direct_deploy, direct_alice)
+    _setup(direct_vm, answers=("RANGE",))  # two postings need the model; one answer is not enough
+    direct_vm.sender = direct_bob
+    with direct_vm.expect_revert("reading of the pay passages was unusable"):
+        contract.open_audit("program_0", "greenhouse", "figma")
+    assert int(contract.audit_count) == 0

@@ -1,16 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BookOpenCheck, Coins, Loader2, MapPin, RefreshCw, ScanSearch } from "lucide-react";
 import { AuditCard } from "@/components/AuditCard";
 import { BoardChecker } from "@/components/BoardChecker";
 import { CreateProgramModal } from "@/components/CreateProgramModal";
 import { Navbar } from "@/components/Navbar";
+import { OwedCard } from "@/components/OwedCard";
 import { ProgramCard } from "@/components/ProgramCard";
 import { TransactionPanel } from "@/components/TransactionPanel";
 import { Button } from "@/components/ui/button";
 import { LAWS, scoreOf } from "@/lib/contracts/types";
 import { useRegistry } from "@/lib/hooks/usePayClear";
+import { NETWORKS, addressUrl, currentNetworkId, type NetworkId } from "@/lib/network";
 
 const STEPS = [
   { icon: ScanSearch, title: "Pick a board", body: "Any employer's public Greenhouse or Ashby job board. Anyone opens an audit; no employer sign-up." },
@@ -22,6 +24,9 @@ const STEPS = [
 export default function HomePage() {
   const { programs, audits, isLoading, isError, error, isFetching, refetch, fetchedAt } = useRegistry();
   const [creating, setCreating] = useState(false);
+  const [netId, setNetId] = useState<NetworkId>("bradbury");
+  useEffect(() => setNetId(currentNetworkId()), []);
+  const net = NETWORKS[netId];
   const ranked = [...audits].sort((a, b) => (scoreOf(a) ?? 2) - (scoreOf(b) ?? 2) || Number(b.id.split("_")[1]) - Number(a.id.split("_")[1]));
   const read = audits.reduce((t, a) => t + Number(a.n_read), 0);
   const missing = audits.reduce((t, a) => t + Number(a.n_missing), 0);
@@ -75,7 +80,8 @@ export default function HomePage() {
           </section>
           <p className="text-xs text-muted-foreground -mt-6">
             An audit measures what postings show, not whether an employer is legally bound (most laws apply above a headcount). Checking a board needs no wallet;
-            to run steps, connect MetaMask and press Test GEN. The program below is a demo funded by test wallets; the boards are real.
+            to run steps, connect MetaMask and get test GEN ({net.id === "studio" ? "Test GEN button" : "Faucet link"}). The program below is a demo funded by test
+            wallets; the boards are real. The same contract runs on Bradbury testnet and on GenLayer Studio: switch at the top.
           </p>
 
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -91,7 +97,7 @@ export default function HomePage() {
               </div>
               {isLoading && (
                 <p className="flex items-center gap-2 text-muted-foreground">
-                  <Loader2 className="h-4 w-4 animate-spin" /> Reading the audits from GenLayer Studio…
+                  <Loader2 className="h-4 w-4 animate-spin" /> Reading the audits from {net.label}…
                 </p>
               )}
               {isError && <p className="text-destructive text-sm">Could not read the contract: {error?.message}</p>}
@@ -101,6 +107,7 @@ export default function HomePage() {
               ))}
             </div>
             <aside className="lg:col-span-4 space-y-5 lg:sticky lg:top-24">
+              <OwedCard />
               {[...programs].reverse().map((p) => (
                 <ProgramCard key={p.id} program={p} />
               ))}
@@ -129,7 +136,13 @@ export default function HomePage() {
         </div>
       </main>
       <footer className="border-t border-border py-6 px-4 text-center text-xs text-muted-foreground space-y-1">
-        <p>PayClear on GenLayer Studio · postings read from the public Greenhouse and Ashby job board APIs. An audit is a record of what postings show, not legal advice.</p>
+        <p>
+          PayClear on {net.label} ·{" "}
+          <a className="underline mono" href={addressUrl(net, net.contract)} target="_blank" rel="noreferrer">
+            {net.contract.slice(0, 6)}…{net.contract.slice(-4)}
+          </a>{" "}
+          · postings read from the public Greenhouse and Ashby job board APIs. An audit is a record of what postings show, not legal advice.
+        </p>
         <p>
           <a className="underline" href="https://github.com/bars26/genlayer-payclear" target="_blank" rel="noreferrer">
             Source and reproduction on GitHub

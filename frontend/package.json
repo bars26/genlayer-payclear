@@ -1,13 +1,14 @@
 {
-  "name": "fieldcall-frontend",
+  "name": "payclear-frontend",
   "version": "1.0.0",
-  "description": "TrialPledge: clinical-trial transparency bonds ruled by GenLayer validators.",
+  "description": "PayClear: pay-transparency audits of public job boards on GenLayer (Bradbury testnet and Studio).",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "postinstall": "node scripts/patch-genlayer-js.mjs"
   },
   "keywords": [],
   "author": "",
@@ -30,7 +31,8 @@
     "sonner": "^1.7.1",
     "tailwind-merge": "^3.3.1",
     "viem": "2.21.54",
-    "wagmi": "^2.19.2"
+    "wagmi": "^2.19.2",
+    "genlayer-js-bradbury": "npm:genlayer-js@2.0.0-rc.2"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.16",

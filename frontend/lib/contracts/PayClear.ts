@@ -1,5 +1,8 @@
 import { createClient } from "genlayer-js";
 import { studionet } from "genlayer-js/chains";
+import { createClient as createBradburyClient, encodeExternalMessageFeeParams } from "genlayer-js-bradbury";
+import { testnetBradbury } from "genlayer-js-bradbury/chains";
+import type { Network } from "../network";
 import type { Audit, FunderRow, Program, Result } from "./types";
 import { TxError, classifyError, rawMessage } from "../utils/errors";
 import { withBackoff } from "../utils/retry";
@@ -60,8 +63,14 @@ const WRITE_EFFECT: Record<string, string> = {
   step: "no postings were read (validators may have failed to read the board or to agree)",
   recheck: "the posting was not read again",
   close: "the program was not closed",
-  refund: "nothing was returned",
+  refund: "nothing was credited",
+  withdraw: "nothing was sent",
 };
+
+// Bradbury: time each validator phase may take (seconds, 30 to 600) and the fee prepaid for a withdraw's transfer.
+const BRADBURY_TIME = { open_audit: 300n, step: 300n, recheck: 300n } as Record<string, bigint>;
+const WITHDRAW_GAS = 100_000n;
+const WITHDRAW_GAS_PRICE = 2_000_000_000n;
 
 export interface CreateProgramInput {
   title: string;
@@ -70,29 +79,46 @@ export interface CreateProgramInput {
   perAuditor: number;
 }
 
-/** Typed wrapper around the PayClear Intelligent Contract. */
+/**
+ * Typed wrapper around the PayClear Intelligent Contract, on GenLayer Studio (genlayer-js 1.x) or Bradbury testnet
+ * (genlayer-js 2.0 rc: fee distributions on every write, reads through a GenLayer node RPC, no return values or contract
+ * messages in what the chain reports, so results are read back from the contract after each write).
+ */
 class PayClear {
+  readonly network: Network;
   private contractAddress: `0x${string}`;
+  private account?: `0x${string}`;
   private client: any;
+  private reader: any;
 
-  constructor(contractAddress: string, address?: string | null, studioUrl?: string) {
-    this.contractAddress = contractAddress as `0x${string}`;
-    const config: any = { chain: studionet };
-    if (address) config.account = address as `0x${string}`;
-    if (studioUrl) config.endpoint = studioUrl;
-    this.client = createClient(config);
+  constructor(network: Network, address?: string | null) {
+    this.network = network;
+    this.contractAddress = network.contract as `0x${string}`;
+    this.account = (address || undefined) as `0x${string}` | undefined;
+    if (network.id === "bradbury") {
+      this.client = createBradburyClient({ chain: testnetBradbury, ...(address ? { account: address as `0x${string}` } : {}) } as any);
+      this.reader = createBradburyClient({ chain: testnetBradbury, endpoint: network.readRpc } as any);
+    } else {
+      const config: any = { chain: studionet, endpoint: network.rpc };
+      if (address) config.account = address as `0x${string}`;
+      this.client = createClient(config);
+      this.reader = this.client;
+    }
   }
 
   private read<T>(functionName: string, args: unknown[] = []): Promise<T> {
-    // Every attempt is a gen_call, so each one draws on the client-side rate budget.
+    // On Studio every attempt is a gen_call, so each one draws on the client-side rate budget.
     return withBackoff(
       async () => {
-        await takeSlot();
-        return (await this.client.readContract({ address: this.contractAddress, functionName, args })) as T;
+        if (this.network.rateLimited) await takeSlot();
+        return (await this.reader.readContract({ address: this.contractAddress, functionName, args })) as T;
       },
       { phase: "read", attempts: 5 }
     );
   }
+
+  owedTo = (address: string) => this.read<string>("owed_to", [address]).then((v) => BigInt(String(v ?? "0")));
+  getResults = (id: string, offset: number, limit = 200) => this.read<string>("get_results", [id, offset, limit]).then((v) => JSON.parse(v) as Result[]);
 
   getProgram = (id: string) => this.read<Program>("get_program", [id]);
   getAudit = (id: string) => this.read<Audit>("get_audit", [id]);
@@ -142,6 +168,9 @@ class PayClear {
   refund(programId: string, funder: string, onProgress?: (p: TxProgress) => void) {
     return this.write("refund", [programId, funder], 0n, onProgress);
   }
+  withdraw(onProgress?: (p: TxProgress) => void) {
+    return this.write("withdraw", [], 0n, onProgress);
+  }
 
   /**
    * Send a write and wait for consensus. Sends are never auto-retried (each attempt would
@@ -150,6 +179,7 @@ class PayClear {
    * execution_result is checked and a revert is reported as such.
    */
   private async write(functionName: string, args: unknown[], value: bigint, onProgress?: (p: TxProgress) => void): Promise<TxResult> {
+    if (this.network.id === "bradbury") return this.writeBradbury(functionName, args, value, onProgress);
     await takeSlot((ms) =>
       onProgress?.({ step: "retrying", message: `Waiting ${Math.ceil(ms / 1000)}s to stay under GenLayer Studio's 30 requests per minute.` })
     );
@@ -189,8 +219,8 @@ class PayClear {
         kind: "contract_revert",
         phase: "verify",
         txHash,
-        message: `The contract refused this call and is sending your GEN back: ${outcome.returned.slice(9).trim()}`,
-        hint: "Nothing changed. The refund lands in your wallet once the transaction finalizes.",
+        message: `The contract refused this call and credited your GEN back: ${outcome.returned.slice(9).trim()}`,
+        hint: "Nothing else changed. Take the GEN out with Withdraw under “Your GEN in PayClear”.",
         detail: String(outcome.returned),
       });
     }
@@ -205,6 +235,82 @@ class PayClear {
       });
     }
     return { txHash, status, executionResult: outcome.result, receipt, returned: outcome.returned };
+  }
+
+  /** Fee options for a Bradbury write; a withdraw also prepays the fee of the transfer it sends to the caller. */
+  private async bradburyFees(functionName: string) {
+    const time = BRADBURY_TIME[functionName] ?? 120n;
+    const messageAllocations =
+      functionName === "withdraw" && this.account
+        ? [{ messageType: 0, onAcceptance: false, recipient: this.account, callKey: `0x${"00".repeat(32)}`,
+             feeParams: encodeExternalMessageFeeParams({ gasLimit: WITHDRAW_GAS, maxGasPrice: WITHDRAW_GAS_PRICE }),
+             budget: WITHDRAW_GAS * WITHDRAW_GAS_PRICE }]
+        : undefined;
+    const est = await this.client.estimateTransactionFees({ leaderTimeunitsAllocation: time, validatorTimeunitsAllocation: time, messageAllocations });
+    return { distribution: est.distribution, feeValue: est.feeValue, ...(messageAllocations ? { messageAllocations: est.messageAllocations ?? messageAllocations } : {}) };
+  }
+
+  /**
+   * Bradbury: the chain reports the consensus decision and whether the contract ran to completion, but not its return
+   * value or message. A refused payable call still completes (it returns "REFUNDED: ..." and credits the GEN back), so
+   * callers check what changed by reading the contract afterwards.
+   */
+  private async writeBradbury(functionName: string, args: unknown[], value: bigint, onProgress?: (p: TxProgress) => void): Promise<TxResult> {
+    let fees: any;
+    try {
+      fees = await this.bradburyFees(functionName);
+    } catch (err) {
+      throw classifyError(err, "estimate");
+    }
+    onProgress?.({ step: "awaiting_wallet", message: "Approve the transaction in your wallet." });
+    let txHash: string;
+    try {
+      txHash = (await this.client.writeContract({ address: this.contractAddress, functionName, args, value, fees })) as string;
+    } catch (err) {
+      throw classifyError(err, "send");
+    }
+    const reading =
+      functionName === "open_audit" || functionName === "step" || functionName === "recheck"
+        ? "Five Bradbury validators are reading the job board and the pay passages (1 to 5 minutes)."
+        : "Waiting for Bradbury validators to decide (about a minute).";
+    onProgress?.({ step: "submitted", txHash, message: `Transaction sent. ${reading}` });
+
+    let tx: any;
+    try {
+      tx = await withBackoff(
+        async () => {
+          await this.client.waitForTransactionReceipt({ hash: txHash, status: "ACCEPTED" as any, retries: 100, interval: 6000 }).catch(() => null);
+          return this.client.getTransaction({ hash: txHash as `0x${string}` });
+        },
+        { phase: "confirm" }
+      );
+    } catch (err) {
+      throw classifyError(err, "confirm", txHash);
+    }
+    const status = String(tx?.statusName ?? "UNKNOWN");
+    const execution = String(tx?.txExecutionResultName ?? "UNKNOWN");
+    onProgress?.({ step: "accepted", txHash, message: `Consensus status: ${status}` });
+    if (status !== "ACCEPTED" && status !== "FINALIZED") {
+      throw new TxError({
+        kind: "accepted_no_effect",
+        phase: "verify",
+        txHash,
+        message: `The validators did not reach a decision (${status.replaceAll("_", " ").toLowerCase()}), so ${WRITE_EFFECT[functionName] ?? "nothing changed"}.`,
+        hint: "This happens on the testnet when a leader runs out of time. Nothing was charged beyond the fee; send it again.",
+        detail: `status ${status}, execution ${execution}`,
+      });
+    }
+    if (execution !== "FINISHED_WITH_RETURN") {
+      throw new TxError({
+        kind: "accepted_no_effect",
+        phase: "verify",
+        txHash,
+        message: `The transaction was ACCEPTED, but the contract rejected the call, so ${WRITE_EFFECT[functionName] ?? "nothing changed"}.`,
+        hint: "Bradbury does not report the contract's message; the app checks the usual reasons before sending. Open the transaction in the explorer.",
+        detail: `execution ${execution}; votes ${(tx?.lastRound?.validatorVotesName ?? []).join("/")}`,
+      });
+    }
+    return { txHash, status, executionResult: execution, receipt: tx, returned: undefined };
   }
 }
 

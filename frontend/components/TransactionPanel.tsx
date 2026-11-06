@@ -1,5 +1,7 @@
 "use client";
 
+import { currentNetwork } from "@/lib/network";
+
 import { useState } from "react";
 import { Activity, AlertTriangle, CheckCircle2, Copy, ExternalLink, Loader2 } from "lucide-react";
 import { usePayClearContract, WRITE_LABEL } from "@/lib/hooks/usePayClear";
@@ -115,13 +117,15 @@ export function TransactionPanel() {
           Every write shows its hash and status here. <strong>ACCEPTED</strong> means validators reached consensus; the contract outcome (SUCCESS or ERROR) is
           shown separately, because a refused call is still ACCEPTED.
         </p>
+        {currentNetwork().rateLimited && (
         <p className="text-xs text-muted-foreground mt-2" title="GenLayer Studio allows 30 contract reads and sends per minute per IP; this app stays under its own budget.">
           Studio requests from this tab in the last minute: <strong className="text-foreground">{used}/{BUDGET}</strong>
           {waitMs > 0 && <span className="text-[#B45309]"> · next slot in {Math.ceil(waitMs / 1000)}s</span>}
         </p>
+        )}
       </div>
       {entries.length === 0 ? (
-        <p className="text-sm text-muted-foreground">Nothing yet. Connect a wallet, press Test GEN, then open an audit or run a step.</p>
+        <p className="text-sm text-muted-foreground">Nothing yet. Connect a wallet, get test GEN, then open an audit or run a step.</p>
       ) : (
         <ul className="space-y-2">
           {entries.map((tx) => (

@@ -1,6 +1,7 @@
-// Live end-to-end demo of PayClear on GenLayer Studio, auditing real employers' public job boards.
+// Live end-to-end demo of PayClear v2 on GenLayer Studio, auditing real employers' public job boards.
+// (scripts/demo-bradbury.mjs runs the same flow on Bradbury testnet.)
 //
-//   node scripts/demo.mjs <contract-address>
+//   node scripts/demo.mjs <contract-address>          # writes docs/studio/demo-run.json
 //
 // The program is a DEMO program funded by test wallets; the auditors are test wallets. The job boards and postings
 // are real, read live from Greenhouse and Ashby by every validator.
@@ -185,7 +186,7 @@ const reconcile = async (label) => {
   const onChain = await balance(CONTRACT);
   const ok = BigInt(t.expected_balance) === onChain;
   reconciliations.push({ label, expected: t.expected_balance, balance: onChain.toString(), ok });
-  console.log(`  reconcile (${label}): open program pots = ${fmt(t.expected_balance)} GEN; contract balance ${fmt(onChain)} GEN ${ok ? "OK" : "MISMATCH"}`);
+  console.log(`  reconcile (${label}): pots + credited = ${fmt(t.expected_balance)} GEN (credited ${fmt(t.owed)}); contract balance ${fmt(onChain)} GEN ${ok ? "OK" : "MISMATCH"}`);
   if (!ok) throw new Error("balance mismatch");
 };
 
@@ -193,12 +194,15 @@ const ENDS = new Date(Date.now() + 60 * 86_400_000).toISOString().slice(0, 10);
 const REWARD = GEN / 20n;
 const program = (c, who, title, ends, reward, perAuditor, value) => write(c, who, "create_program", [title, ends, reward, perAuditor], value);
 
-// Refused at creation: the GEN comes straight back.
+// Refused at creation: the GEN is credited back to the sponsor, who withdraws it.
 await program(A, "sponsor", "US pay transparency, fall 2026", "2026-02-31", REWARD, 40, 2n * GEN); // no such calendar date
 await program(A, "sponsor", "US pay transparency, fall 2026", ENDS, GEN / 1000n, 40, 2n * GEN); // reward below 0.01 GEN
 await program(A, "sponsor", "US pay transparency, fall 2026", ENDS, REWARD, 0, 2n * GEN); // per_auditor must be 1 to 1000
 await program(A, "sponsor", "US pay transparency, fall 2026", ENDS, REWARD, 40, GEN / 20n); // pot below 0.1 GEN
-await reconcile("after the refused programs: the contract kept nothing");
+await reconcile("after the refused programs: their GEN is credited to the sponsor");
+await write(A, "sponsor", "withdraw", []);
+await write(A, "sponsor", "withdraw", [], 0n, { expectError: true }); // nothing left to withdraw
+await reconcile("after the sponsor withdrew: the contract kept nothing");
 
 console.log("");
 await program(A, "sponsor", "US pay transparency, fall 2026", ENDS, REWARD, 40, 2n * GEN);
@@ -214,8 +218,10 @@ await write(X, "bystander", "open_audit", [pid(0), "greenhouse", "figma"], 0n, {
 let state = JSON.parse(await read(A, "score", [figma])).state;
 for (let turn = 0; state !== "done"; turn++) state = (await write(turn % 2 ? X : S, turn % 2 ? "bystander" : "auditor", "step", [figma])).returned;
 console.log(`  -> Figma (greenhouse/figma): ${await read(A, "score", [figma])}`);
-await write(S, "auditor", "recheck", [figma, "6216211004"]); // a fresh reading of the posting without pay
-await write(X, "bystander", "recheck", [figma, "6216211004"], 0n, { expectError: true }); // once per posting
+const figmaResults = JSON.parse(await read(A, "get_results", [figma, 0, 200]));
+const again = (figmaResults.find((r) => r.code === "no_range") ?? figmaResults.find((r) => r.code === "range_text") ?? figmaResults.find((r) => r.code !== "out_of_scope")).id;
+await write(S, "auditor", "recheck", [figma, again]); // a fresh reading of one posting
+await write(X, "bystander", "recheck", [figma, again], 0n, { expectError: true }); // once per posting
 await write(S, "auditor", "open_audit", [pid(0), "greenhouse", "figma"], 0n, { expectError: true }); // a week between audits
 await reconcile("after the Figma audit");
 
@@ -224,14 +230,26 @@ await audit("bystander", X, pid(0), "ashby", "linear", "Linear");
 await audit("auditor", S, pid(0), "greenhouse", "airtable", "Airtable");
 await audit("bystander", X, pid(0), "greenhouse", "asana", "Asana");
 await write(X, "bystander", "close", [pid(0)], 0n, { expectError: true }); // steps are paid until the program ends
-await reconcile("end of run");
+await reconcile("after the audits: step rewards are credited");
+const owedBefore = { auditor: await read(A, "owed_to", [acct.auditor.address]), bystander: await read(A, "owed_to", [acct.bystander.address]) };
+console.log(`  credited: auditor ${fmt(owedBefore.auditor)} GEN, bystander ${fmt(owedBefore.bystander)} GEN (step rewards, plus the refused 0.05 GEN top-up)`);
+const balBefore = { auditor: await balance(acct.auditor.address), bystander: await balance(acct.bystander.address) };
+await write(S, "auditor", "withdraw", []);
+await write(X, "bystander", "withdraw", []);
+await reconcile("end of run, after the auditors withdrew");
+const withdrawals = {};
+for (const k of ["auditor", "bystander"]) {
+  const gained = (await balance(acct[k].address)) - balBefore[k];
+  withdrawals[k] = { credited: String(owedBefore[k]), wallet_gain: gained.toString() };
+  console.log(`  ${k}: credited ${fmt(owedBefore[k])} GEN, wallet balance rose by ${fmt(gained)} GEN`);
+}
 
 console.log("\nfinal program:");
 const pots = { [pid(0)]: await read(A, "get_program", [pid(0)]) };
 const out = {
   contract: CONTRACT, accounts: Object.fromEntries(Object.entries(acct).map(([k, a]) => [k, a.address])), programs: [pid(0)],
   program: Object.fromEntries(Object.entries(pots[pid(0)] instanceof Map ? Object.fromEntries(pots[pid(0)]) : pots[pid(0)]).map(([k, v]) => [k, typeof v === "bigint" ? v.toString() : v])),
-  audits: {}, reconciliations, balances: {}, log,
+  audits: {}, reconciliations, withdrawals, balances: {}, log,
 };
 for (const id of audits) {
   const a = await read(A, "get_audit", [id]);
@@ -244,5 +262,5 @@ for (const id of audits) {
   console.log(`  ${id} ${g("employer")} ${JSON.stringify(out.audits[id].score)}`);
 }
 for (const [k, a] of Object.entries(acct)) out.balances[k] = (await balance(a.address)).toString();
-writeFileSync(new URL("../docs/demo-run.json", import.meta.url), JSON.stringify(out, null, 2));
-console.log("\nwrote docs/demo-run.json");
+writeFileSync(new URL("../docs/studio/demo-run.json", import.meta.url), JSON.stringify(out, null, 2));
+console.log("\nwrote docs/studio/demo-run.json");

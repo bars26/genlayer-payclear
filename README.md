@@ -29,9 +29,35 @@ PayClear turns the check into a contract anyone can run and anyone can re-run:
    **anyone can ask once for a fresh reading of any posting** (an employer who adds a range is re-read and the counts follow).
 
 **Live app:** [payclear-bars26.vercel.app](https://payclear-bars26.vercel.app). Paste a board and see, without a wallet, every posting in
-scope and how it will be read. Writes need MetaMask on GenLayer Studio (chain 61999); **Test GEN** funds your wallet.
+scope and how it will be read. The same contract runs on two networks; switch at the top of the app:
 
-**Contract:** [`0x42E002dc4360752C37408F6755c6E0f94716dBfc`](https://explorer-studio.genlayer.com/address/0x42E002dc4360752C37408F6755c6E0f94716dBfc) on GenLayer Studio.
+| Network | Contract | Source | Test GEN |
+|---|---|---|---|
+| **Bradbury testnet** (Phase 2, chain 4221) | [`BRADBURY_ADDRESS`](https://explorer-bradbury.genlayer.com/address/BRADBURY_ADDRESS) | `contracts/pay_clear.bradbury.py` | [testnet faucet](https://testnet-faucet.genlayer.foundation) |
+| GenLayer Studio (chain 61999) | [`0x6dEc38B51C07120b910fe6b0a6c07b3Cf92A238D`](https://explorer-studio.genlayer.com/address/0x6dEc38B51C07120b910fe6b0a6c07b3Cf92A238D) | `contracts/pay_clear.py` | **Test GEN** button |
+
+## What is new in v2
+
+v1 ([`0x42E0…dBfc`](https://explorer-studio.genlayer.com/address/0x42E002dc4360752C37408F6755c6E0f94716dBfc), [run](docs/v1/REPRODUCTION.md)) ran
+on GenLayer Studio only. v2 is **live on Bradbury testnet**, where five independent validators run the audit, and changes the contract
+where Bradbury required it:
+
+1. **One source, two networks.** Bradbury Phase 2 runs a newer py-genlayer runner (`babwp9t37…`) with the `import genlayer as gl` API;
+   Studio runs the runner it always did. A short block at the top of `contracts/pay_clear.py` picks the right names on each, and
+   `scripts/bradbury_source.py` writes `contracts/pay_clear.bradbury.py`: the same program with the Bradbury header, without comments
+   and docstrings, because Bradbury stores the deployed source on-chain at about 0.77M gas per KB in blocks of about 32M gas. The
+   script compares the two files' syntax trees and CI fails if they drift. The 42 direct tests run on both files, each under its
+   own runner (genlayer-test 0.29 for Studio, 0.30 with GenVM Manager v0.6.0-rc10 for Bradbury).
+2. **GEN only leaves through `withdraw`, to the caller.** Step rewards, payments the contract refuses and funders' returned shares
+   are credited to an address; `withdraw()` sends that address everything credited to it. On Bradbury every transfer out of a
+   contract is a message whose fee the sending transaction prepays: a withdraw prepays exactly one transfer, to its own sender,
+   and the app adds that allocation. No call ever pays a third party, so no call can fail or lose GEN on someone else's behalf.
+   `totals()` now counts what is credited and not yet withdrawn, and the live runs reconcile it with the contract's balance.
+3. **Validators check the reading, not byte equality.** v1 required every validator's whole reading of a step to be byte-identical.
+   With five independent validators that stalls on one wavering answer among 25. v2's validator function (`same_reading`) requires
+   everything decided in code (which postings, their places, listed pay, the board's size) to match exactly, and the model's
+   answers to match on all but at most one posting in ten (none below ten). An unusable model answer is agreed on as such and
+   refuses the step instead of storing anything.
 
 ## Why GenLayer
 
@@ -77,34 +103,46 @@ was paid 0.05 GEN for each step, and asked for a fresh reading of one posting ([
 | Audits read 25 postings per step, at most 1,500 per audit, resuming after the last id read | No step grows with the board; new postings during an audit are read, removed ones are skipped |
 | One running audit per board per program, and a week before the same board is audited again | Nobody farms rewards by auditing one board over and over |
 | A step is paid only if it read postings, never to a funder of the program, at most `per_auditor` times per auditor | Sponsors cannot pay themselves; one wallet cannot drain the pot |
+| Rewards, refused payments and returned shares are credited; only `withdraw` sends GEN, only to its caller, all of it at once | No call pays a third party, so on Bradbury nobody can make a transfer to someone else fail for lack of a prepaid fee |
+| A validator agrees when everything decided in code matches exactly and the model's answers match on all but one posting in ten | One wavering reading cannot stall an audit; a leader cannot change listed pay, places or more than one answer in ten |
 | Anyone can ask once for a fresh reading of any posting; the counts follow | A misreading or a range added later is corrected on-chain |
-| Funders live in their own maps; closing does a fixed amount of work and each funder is repaid by their own `refund`; top-ups are at least 0.1 GEN | No program can grow so large that closing it strands the funders' GEN |
-| Payable calls never revert; they refund and return `REFUNDED: <reason>`, including dates that do not exist (2026-02-31) | GenLayer keeps the value of a reverted call |
+| Funders live in their own maps; closing does a fixed amount of work and each funder's share is credited by its own `refund` (anyone may send it); top-ups are at least 0.1 GEN | No program can grow so large that closing it strands the funders' GEN |
+| Payable calls never revert; they credit the GEN back and return `REFUNDED: <reason>`, including dates that do not exist (2026-02-31) | GenLayer keeps the value of a reverted call |
 
 ## The app
 
+- **Bradbury or Studio:** a switch in the header reloads the app on the other network (`?network=bradbury|studio`). MetaMask is
+  asked to add or switch to that chain when you connect. On Bradbury, page loads read through a GenLayer node RPC
+  (`rpc-bradbury.genlayer.com`), writes carry a fee estimate, and a withdraw carries the prepaid fee of its transfer.
+- **Your GEN in PayClear:** what is credited to the connected wallet and a Withdraw button.
 - **Check a job board:** paste `greenhouse/figma` or a board link: every posting in scope with its jurisdictions and how it will be read
   (pay listed, read by validators, no pay words, employer's own page), and one click to audit it on-chain.
 - **Employers:** every audit with its score ring, the split of postings by result, the postings with no pay shown, every posting the
   validators read with a **read again** button, and every step with who ran it, what it paid and its packet hash. A running audit has a
   **Read the next 25** button that pays the program's reward.
 - **Programs:** the reward per step, the pot, a fund box, and after the last day each funder's share with a button to return it.
-- **Studio's 30 requests per minute:** page loads read the registry server-side (programs, audits, their funders and results), CDN-cached.
+- **Studio's 30 requests per minute:** page loads read the registry server-side (programs, audits, their funders and results), CDN-cached,
+  on both networks.
 
 ## Run it
 
 ```bash
 pip install -r requirements.txt
-genvm-lint check contracts/pay_clear.py
-pytest tests/direct/ -v                     # 39 tests: boards, locations, the model's answers and payouts mocked
+python3 scripts/bradbury_source.py --check  # the Bradbury file is the Studio file with the Bradbury header
+genvm-lint check contracts/pay_clear.py && genvm-lint check contracts/pay_clear.bradbury.py
+pytest tests/direct/ -v                     # 42 tests under the Studio runner
 
-npm install
-node scripts/deploy.mjs
-node scripts/verify-code.mjs <address>
-node scripts/demo.mjs <address>             # the live run above
+# the same 42 tests under the Bradbury runner (a separate venv: genlayer-test 0.30 reads GenVM Manager v0.6.0-rc10)
+pip install "genlayer-test==0.30.0rc2" && PAYCLEAR_NETWORK=bradbury pytest tests/direct/ -v
+
+npm install                                 # postinstall fixes two fee-policy reads in genlayer-js 2.0.0-rc.2
+node scripts/deploy-bradbury.mjs            # keys in ~/.config/genlayer-demos/payclear-bradbury-*.json
+node scripts/verify-code-bradbury.mjs <address>
+node scripts/demo-bradbury.mjs <address>    # the Bradbury run above
+node scripts/deploy.mjs && node scripts/verify-code.mjs <address> && node scripts/demo.mjs <address>   # Studio
 node scripts/reproduction.mjs               # regenerate docs/REPRODUCTION.md
 
-cd frontend && cp .env.example .env.local && npm run dev
+cd frontend && npm run dev                  # NEXT_PUBLIC_BRADBURY_CONTRACT / NEXT_PUBLIC_STUDIO_CONTRACT override the addresses
 ```
 
 ## Limits, stated plainly
@@ -116,5 +154,10 @@ cd frontend && cp .env.example .env.local && npm run dev
 - "Remote, US" and "North America" postings are counted under Colorado's law, which covers remote jobs open to its residents.
 - The audit records what postings show, not whether an employer must disclose: the laws' headcount thresholds are shown for context only.
 - The demo program is funded by test wallets; the auditors are test wallets.
+- Bradbury is a testnet. A round can end without a decision when the leader runs out of time; nothing changes and the app says to
+  send it again. Bradbury reports a transaction's decision and execution result but not the contract's return value or message,
+  so the app reads results back from the contract (and checks the usual refusals before sending).
+- A withdraw sent to Bradbury without the prepaid transfer fee (for example from a script that leaves it out) completes, but the
+  transfer is dropped; the app and `scripts/bradbury.mjs` always add it.
 
 MIT licensed.

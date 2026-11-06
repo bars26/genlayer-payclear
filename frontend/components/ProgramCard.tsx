@@ -70,12 +70,13 @@ export function ProgramCard({ program }: { program: Program }) {
         {!open && (
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">
-              Closed: {formatGen(program.returned_total, 4)} of {formatGen(program.returnable, 4)} GEN returned to {String(program.n_refunded)}/{String(program.n_funders)} funders.
+              Closed: {formatGen(program.returned_total, 4)} of {formatGen(program.returnable, 4)} GEN credited back to {String(program.n_refunded)}/{String(program.n_funders)} funders,
+              who take it out with Withdraw.
             </p>
             <div className="flex flex-wrap gap-2">
               {mine && !mine.refunded && (
                 <Button size="sm" className="h-8" disabled={!!pending} onClick={() => writeAsync({ kind: "refund", programId: program.id, funder: mine.address }).catch(() => {})}>
-                  Return my share
+                  Credit my share
                 </Button>
               )}
               {toReturn
@@ -84,7 +85,7 @@ export function ProgramCard({ program }: { program: Program }) {
                 .map((f) => (
                   <Button key={f.address} size="sm" variant="outline" className="h-8 mono text-xs" disabled={!isConnected || !!pending}
                     onClick={() => writeAsync({ kind: "refund", programId: program.id, funder: f.address }).catch(() => {})}>
-                    Return {f.address.slice(0, 6)}…{f.address.slice(-4)}
+                    Credit {f.address.slice(0, 6)}…{f.address.slice(-4)}
                   </Button>
                 ))}
             </div>

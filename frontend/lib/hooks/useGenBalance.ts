@@ -2,11 +2,11 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { getAddress } from "viem";
-import { getStudioUrl } from "../genlayer/client";
+import { currentNetwork } from "../network";
 
-/** Read a wallet's GEN balance straight from Studio (eth_getBalance is in the 300/min read bucket). */
+/** Read a wallet's GEN balance from the page's network RPC (on Studio eth_getBalance is in the 300/min read bucket). */
 export async function fetchGenBalance(address: string): Promise<bigint> {
-  const res = await fetch(getStudioUrl(), {
+  const res = await fetch(currentNetwork().rpc, {
     method: "POST",
     headers: { "content-type": "application/json" },
     body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "eth_getBalance", params: [getAddress(address), "latest"] }),
@@ -19,7 +19,7 @@ export async function fetchGenBalance(address: string): Promise<bigint> {
 /** The connected wallet's balance, shown in the app because MetaMask can lag behind Studio. */
 export function useGenBalance(address: string | null) {
   return useQuery<bigint, Error>({
-    queryKey: ["genBalance", address],
+    queryKey: ["genBalance", currentNetwork().id, address],
     queryFn: () => fetchGenBalance(address!),
     enabled: !!address,
     refetchInterval: 20_000,

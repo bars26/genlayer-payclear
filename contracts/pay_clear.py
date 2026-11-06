@@ -6,7 +6,48 @@ import json
 import re
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from genlayer import *
+
+import genlayer
+
+# One source for both networks. Only the header above differs: GenLayer Studio runs the py-genlayer runner named
+# there, Bradbury testnet (Phase 2) runs `py-genlayer:babwp9t37…` with the newer `import genlayer as gl` API.
+# contracts/pay_clear.bradbury.py is this file with the Bradbury header (scripts/bradbury-source.mjs writes it).
+if hasattr(genlayer, "gl"):  # GenLayer Studio
+    from genlayer import *
+
+    _Contract = gl.Contract
+    _allow_storage = allow_storage
+
+    def _message_raw() -> dict:
+        return gl.message_raw
+
+    @gl.evm.contract_interface
+    class _Wallet:
+        """A plain wallet: only receives GEN through an external (EthSend) message."""
+
+        class View:
+            pass
+
+        class Write:
+            pass
+
+    def _send(to: Address, amount: int) -> None:
+        _Wallet(to).emit_transfer(value=u256(amount))
+else:  # Bradbury Phase 2
+    import genlayer as gl
+    from genlayer.types import *
+    from genlayer.storage import TreeMap
+
+    _Contract = gl.contract.Contract
+    _allow_storage = gl.storage.allow
+
+    def _message_raw() -> dict:
+        return gl.message.raw
+
+    def _send(to: Address, amount: int) -> None:
+        # A wallet is an EVM account: pay it with an external message (empty calldata). On Bradbury the transaction
+        # that withdraws must carry a fee allocation for this message (the app adds it).
+        gl.evm.Account(to).emit_call(u256(amount), b"")
 
 PROGRAM_OPEN = "open"
 PROGRAM_CLOSED = "closed"
@@ -75,17 +116,6 @@ _CA_PROVINCES = {"AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC
 _US_WORDS = re.compile(r"\b(us|u\.s\.|usa|u\.s\.a\.|united states|united states of america|north america|americas)\b", re.I)
 _PAY_HINT = re.compile(r"(\$\s?\d|\busd\b|salary|base pay|pay range|pay rate|hourly rate|compensation range|wage|on[- ]target|\bote\b)", re.I)
 _ZERO = Address(b"\x00" * 20)
-
-
-@gl.evm.contract_interface
-class _Wallet:
-    """A plain wallet: only receives GEN through an external (EthSend) message."""
-
-    class View:
-        pass
-
-    class Write:
-        pass
 
 
 def _sha256(data) -> str:
@@ -265,12 +295,13 @@ Respond only with that JSON, without any prefix or suffix.
 """, response_format="json")
     got = answer.get("answers") if isinstance(answer, dict) else None
     if not isinstance(got, list) or len(got) != len(items) or any(a not in TEXT_ANSWERS for a in got):
-        raise gl.vm.UserError("LLM answers must be one of RANGE, NO_RANGE, UNCLEAR per posting")
+        return None  # the model did not answer one of RANGE, NO_RANGE, UNCLEAR per posting
     return got
 
 
-def classify(rows: list, ats: str) -> list:
-    """Decide each posting: scope and structured pay in code, pay in the text read by the validators."""
+def classify(rows: list, ats: str):
+    """Decide each posting: scope and structured pay in code, pay in the text read by the validators.
+    Returns (results, ids the model read), or None when the model's answer was unusable."""
     results, ask = [], []
     for r in rows:
         scope = covered(r["states"])
@@ -287,6 +318,8 @@ def classify(rows: list, ats: str) -> list:
                 ask.append(len(results) - 1)
     if ask:
         answers = read_texts([{"title": results[i]["title"], "location": results[i]["location"], "snippets": results[i]["snippets"]} for i in ask])
+        if answers is None:
+            return None
         for i, a in zip(ask, answers):
             results[i]["code"] = RANGE_TEXT if a == "RANGE" else (UNCLEAR if a == "UNCLEAR" else NO_RANGE)
     for r in results:
@@ -294,10 +327,51 @@ def classify(rows: list, ats: str) -> list:
             r["code"] = UNVERIFIED
         r.pop("hosted", None)
         r["snippets_sha256"] = _sha256(json.dumps(r.pop("snippets", []))) if r["code"] not in (OUT_OF_SCOPE, RANGE_LISTED) else ""
-    return results
+    return results, [results[i]["id"] for i in ask]
 
 
-@allow_storage
+def same_reading(leader: dict, mine: dict) -> bool:
+    """A validator's check of the leader's reading of a board. Everything decided in code (which postings, their
+    locations, listed pay, the board's size) must match exactly. For postings whose pay passages the model read, the
+    validator's own answer must match the leader's on all but at most one posting in ten (none when fewer than ten),
+    so that one wavering reading among 25 does not stall an audit while the leader cannot flip a step's results."""
+    if leader.get("state") != "ok" or mine.get("state") != "ok":
+        return leader.get("state") == mine.get("state")
+    asked = leader.get("llm") or []
+    if asked != (mine.get("llm") or []):
+        return False
+    rest = lambda d: {k: v for k, v in d.items() if k not in ("results", "llm")}
+    if rest(leader) != rest(mine):
+        return False
+    theirs, ours = leader.get("results") or [], mine.get("results") or []
+    if len(theirs) != len(ours):
+        return False
+    differ = 0
+    for x, y in zip(theirs, ours):
+        if x.get("id") in asked:
+            if {k: v for k, v in x.items() if k != "code"} != {k: v for k, v in y.items() if k != "code"}:
+                return False
+            differ += x.get("code") != y.get("code")
+        elif x != y:
+            return False
+    return differ <= len(asked) // 10
+
+
+def _validator(read):
+    """The validator side of a board reading: read the board again and check the leader's result with `same_reading`."""
+
+    def validator_fn(leader_result) -> bool:
+        if not isinstance(leader_result, gl.vm.Return):
+            return False
+        try:
+            return same_reading(json.loads(leader_result.calldata), json.loads(read()))
+        except Exception:
+            return False
+
+    return validator_fn
+
+
+@_allow_storage
 @dataclass
 class Program:
     id: str
@@ -320,7 +394,7 @@ class Program:
     history_json: str
 
 
-@allow_storage
+@_allow_storage
 @dataclass
 class Audit:
     id: str
@@ -346,7 +420,7 @@ class Audit:
     steps_json: str  # per step: at, by, read, packet sha256 (one entry per step, an audit has at most 60)
 
 
-class PayClear(gl.Contract):
+class PayClear(_Contract):
     programs: TreeMap[str, Program]
     audits: TreeMap[str, Audit]
     funds: TreeMap[str, u256]  # "program_id|0xfunder" -> wei put in
@@ -356,12 +430,17 @@ class PayClear(gl.Contract):
     results: TreeMap[str, str]  # "audit_id|posting_id" -> JSON result
     result_at: TreeMap[str, str]  # "audit_id|n" -> posting_id, in reading order
     latest: TreeMap[str, str]  # "program_id|ats|board" -> latest audit id
+    owed: TreeMap[str, u256]  # "0xaddress" -> GEN this address can withdraw (rewards, refunds, returned shares)
     program_count: u256
     audit_count: u256
+    owed_total: u256  # sum of `owed`
+    withdrawn_total: u256
 
     def __init__(self):
         self.program_count = u256(0)
         self.audit_count = u256(0)
+        self.owed_total = u256(0)
+        self.withdrawn_total = u256(0)
 
     # --- helpers -------------------------------------------------------------
 
@@ -369,7 +448,7 @@ class PayClear(gl.Contract):
         return "" if value is None else str(value).strip()
 
     def _now(self) -> str:
-        return gl.message_raw["datetime"]
+        return str(_message_raw()["datetime"])
 
     def _today(self) -> str:
         return self._now()[:10]
@@ -396,14 +475,18 @@ class PayClear(gl.Contract):
         history.append(entry)
         p.history_json = json.dumps(history[-_HISTORY_LIMIT:])
 
-    def _pay(self, to: Address, amount: int) -> None:
+    def _credit(self, to: Address, amount: int) -> None:
+        """GEN never leaves inside the call that earns it: it is credited to the address, which takes it out with
+        `withdraw`. On Bradbury every outgoing transfer is a message whose fee the withdrawing transaction prepays."""
         if amount > 0:
-            _Wallet(to).emit_transfer(value=u256(amount))
+            key = to.as_hex.lower()
+            self.owed[key] = u256(int(self.owed.get(key, u256(0))) + amount)
+            self.owed_total = u256(int(self.owed_total) + amount)
 
     def _reject(self, reason: str) -> str:
-        """Refuse a payable call without reverting and send the GEN back (a reverted call would keep it)."""
-        self._pay(gl.message.sender_address, int(gl.message.value))
-        return f"REFUNDED: {reason}"
+        """Refuse a payable call without reverting (a reverted call would keep the GEN); the GEN is credited back."""
+        self._credit(gl.message.sender_address, int(gl.message.value))
+        return f"REFUNDED: {reason} (your GEN is credited back: withdraw it)"
 
     def _key(self, p: Program, address: str) -> str:
         return f"{p.id}|{address.lower()}"
@@ -442,14 +525,16 @@ class PayClear(gl.Contract):
                 employer = next((n for n in names if n), board)
             after_key = (len(after), after)
             todo = [r for r in rows if (len(r["id"]), r["id"]) > after_key][:_STEP] if after else rows[:_STEP]
-            results = classify(todo, ats)
+            decided = classify(todo, ats)
+            if decided is None:
+                return json.dumps({"state": "unreadable"})
+            results, asked = decided
             more = bool(todo) and len([r for r in rows if (len(r["id"]), r["id"]) > (len(todo[-1]["id"]), todo[-1]["id"])]) > 0
-            packet = {"source": url, "board_size": len(rows), "read": [r["id"] for r in todo],
-                      "results_sha256": _sha256(json.dumps(results, sort_keys=True))}
+            packet = {"source": url, "board_size": len(rows), "read": [r["id"] for r in todo]}
             return json.dumps({"state": "ok", "employer": employer[:80], "board_size": len(rows), "results": results,
-                               "more": more, "packet": packet}, sort_keys=True)
+                               "llm": asked, "more": more, "packet": packet}, sort_keys=True)
 
-        return json.loads(gl.eq_principle.strict_eq(run))
+        return json.loads(gl.vm.run_nondet(run, _validator(run)))
 
     def _store(self, a: Audit, r: dict) -> None:
         key = f"{a.id}|{r['id']}"
@@ -561,6 +646,8 @@ class PayClear(gl.Contract):
         found = self._read_board(a.ats, a.board, a.last_key)
         if found["state"] == "none":
             raise gl.vm.UserError(f"{a.ats} has no public job board named {a.board}")
+        if found["state"] == "unreadable":
+            raise gl.vm.UserError("The model's reading of the pay passages was unusable; try again")
         if found["state"] != "ok":
             raise gl.vm.UserError("The job board could not be read right now; try again")
         if int(a.n_steps) == 0:
@@ -574,6 +661,7 @@ class PayClear(gl.Contract):
         a.n_steps = u256(int(a.n_steps) + 1)
         p.n_steps = u256(int(p.n_steps) + 1)
         packet = dict(found["packet"])
+        packet["results_sha256"] = _sha256(json.dumps(results, sort_keys=True))
         packet["read_at"] = self._now()[:19]
         packet_sha = _sha256(json.dumps(packet, sort_keys=True))
         sender = gl.message.sender_address
@@ -586,7 +674,7 @@ class PayClear(gl.Contract):
                 paid = int(p.reward)
                 p.pot = u256(int(p.pot) - paid)
                 p.paid_total = u256(int(p.paid_total) + paid)
-                self._pay(sender, paid)
+                self._credit(sender, paid)
         steps = self._list(a.steps_json)
         steps.append({"at": packet["read_at"], "by": sender.as_hex, "read": len(results), "packet": packet_sha,
                       "results": packet["results_sha256"], "paid": str(paid)})
@@ -617,12 +705,17 @@ class PayClear(gl.Contract):
             rows = [r for r in postings(ats, data) if r["id"] == posting_id]
             if not rows:
                 return json.dumps({"state": "gone"})
-            return json.dumps({"state": "ok", "result": classify(rows, ats)[0]}, sort_keys=True)
+            decided = classify(rows, ats)
+            if decided is None:
+                return json.dumps({"state": "unreadable"})
+            return json.dumps({"state": "ok", "results": decided[0], "llm": decided[1]}, sort_keys=True)
 
-        found = json.loads(gl.eq_principle.strict_eq(run))
+        found = json.loads(gl.vm.run_nondet(run, _validator(run)))
+        if found["state"] == "unreadable":
+            raise gl.vm.UserError("The model's reading of the pay passages was unusable; try again")
         if found["state"] == "error":
             raise gl.vm.UserError("The job board could not be read right now; try again")
-        new = dict(old) if found["state"] == "gone" else dict(found["result"])
+        new = dict(old) if found["state"] == "gone" else dict(found["results"][0])
         if found["state"] == "gone":
             new["code"] = OUT_OF_SCOPE
             new["removed"] = True
@@ -652,8 +745,8 @@ class PayClear(gl.Contract):
 
     @gl.public.write
     def refund(self, program_id: str, funder: str) -> str:
-        """Return one funder's share of a closed program; anyone can send it, to the funder only. The last funder repaid
-        also receives the rounding remainder."""
+        """Credit one funder's share of a closed program to that funder (who takes it out with `withdraw`); anyone can
+        send it. The last funder repaid also receives the rounding remainder."""
         p = self._program(program_id)
         if p.state != PROGRAM_CLOSED:
             raise gl.vm.UserError("Close the program first")
@@ -671,9 +764,24 @@ class PayClear(gl.Contract):
         self.refunded[key] = True
         p.n_refunded = u256(int(p.n_refunded) + 1)
         p.returned_total = u256(returned + share)
-        self._pay(Address(funder), share)
+        self._credit(Address(funder), share)
         self._log(p, "refunded", funder=Address(funder).as_hex, amount=str(share))
         return str(share)
+
+    @gl.public.write
+    def withdraw(self) -> str:
+        """Send the caller everything credited to them: step rewards, refused payments and returned shares. GEN only
+        ever leaves the contract here, to the caller. Returns the amount in wei."""
+        sender = gl.message.sender_address
+        key = sender.as_hex.lower()
+        amount = int(self.owed.get(key, u256(0)))
+        if amount == 0:
+            raise gl.vm.UserError("Nothing to withdraw")
+        self.owed[key] = u256(0)
+        self.owed_total = u256(int(self.owed_total) - amount)
+        self.withdrawn_total = u256(int(self.withdrawn_total) + amount)
+        _send(sender, amount)
+        return str(amount)
 
     # --- views ---------------------------------------------------------------
 
@@ -732,13 +840,20 @@ class PayClear(gl.Contract):
                            "score_bp": shown * 10000 // decided if decided else None}, sort_keys=True)
 
     @gl.public.view
+    def owed_to(self, address: str) -> str:
+        """GEN (wei) an address can withdraw now."""
+        return str(int(self.owed.get(self._text(address).lower(), u256(0))))
+
+    @gl.public.view
     def totals(self) -> str:
-        """What the contract should hold: open programs' pots and what closed programs have not yet returned."""
+        """What the contract should hold: open programs' pots, what closed programs have not yet credited, and what
+        is credited but not yet withdrawn."""
         held = 0
         for i in range(int(self.program_count)):
             p = self.programs[f"program_{i}"]
             held += int(p.pot) if p.state == PROGRAM_OPEN else int(p.returnable) - int(p.returned_total)
-        return json.dumps({"expected_balance": str(held)})
+        return json.dumps({"expected_balance": str(held + int(self.owed_total)), "owed": str(int(self.owed_total)),
+                           "withdrawn": str(int(self.withdrawn_total))})
 
     @gl.public.view
     def laws(self) -> str:
@@ -749,3 +864,6 @@ class PayClear(gl.Contract):
         """The states a location string names and which of them have a pay-in-posting law (the code the audit uses)."""
         states = jurisdictions(self._text(location))
         return json.dumps({"states": states, "covered": covered(states)})
+
+
+del _Contract  # only the contract class itself should subclass Contract at module level
