@@ -15,6 +15,7 @@ import { NETWORKS, networkFrom, type NetworkId } from "@/lib/network";
  */
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 type Snapshot = { programs: unknown[]; audits: unknown[]; fetchedAt: string };
 const memo: Partial<Record<NetworkId, { at: number; data: Snapshot }>> = {};
@@ -62,10 +63,17 @@ async function load(id: NetworkId): Promise<Snapshot> {
       ? createBradburyClient({ chain: testnetBradbury, endpoint: net.readRpc } as any)
       : createClient({ chain: studionet, endpoint: net.readRpc } as any);
   client.payclear = net.contract;
-  const programs = (await readAll(client, "get_programs")) as any[];
-  for (const p of programs) p.funders = await paged(client, "get_funders", p.id, Number(p.n_funders ?? 0)); // funders live outside the program record
-  const audits = (await readAll(client, "get_audits")) as any[];
-  for (const a of audits) a.results = await paged(client, "get_results", a.id, Number(a.n_read ?? 0));
+  const [programs, audits] = (await Promise.all([readAll(client, "get_programs"), readAll(client, "get_audits")])) as [any[], any[]];
+  if (id === "bradbury") {
+    // Bradbury's node RPC answers each read in seconds and does not rate-limit: read funders and results in parallel.
+    await Promise.all([
+      ...programs.map(async (p) => (p.funders = await paged(client, "get_funders", p.id, Number(p.n_funders ?? 0)))),
+      ...audits.map(async (a) => (a.results = await paged(client, "get_results", a.id, Number(a.n_read ?? 0)))),
+    ]);
+  } else {
+    for (const p of programs) p.funders = await paged(client, "get_funders", p.id, Number(p.n_funders ?? 0)); // funders live outside the program record
+    for (const a of audits) a.results = await paged(client, "get_results", a.id, Number(a.n_read ?? 0));
+  }
   return { programs, audits, fetchedAt: new Date().toISOString() };
 }
 
@@ -80,7 +88,7 @@ export async function GET(request: Request) {
     return Response.json(memo[id]!.data, {
       // Short on purpose: a long stale-while-revalidate would show the first visitor after a
       // quiet period a registry from hours ago, with sightings that were settled meanwhile.
-      headers: { "Cache-Control": "public, s-maxage=15, stale-while-revalidate=45" },
+      headers: { "Cache-Control": id === "bradbury" ? "public, s-maxage=30, stale-while-revalidate=600" : "public, s-maxage=15, stale-while-revalidate=45" },
     });
   } catch (err) {
     if (memo[id]) return Response.json(memo[id]!.data, { headers: { "Cache-Control": "public, s-maxage=10" } });

@@ -21,7 +21,7 @@ const registryKey = () => ["registry", currentNetwork().id];
 
 type Registry = { programs: Program[]; audits: Audit[]; fetchedAt?: string };
 
-async function fetchJson(url: string, timeoutMs = 25_000) {
+async function fetchJson(url: string, timeoutMs = 60_000) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   const res = await fetch(url, { signal: ctrl.signal }).finally(() => clearTimeout(timer));
