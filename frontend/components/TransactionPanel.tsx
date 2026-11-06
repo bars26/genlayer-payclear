@@ -1,6 +1,7 @@
 "use client";
 
 import { currentNetwork } from "@/lib/network";
+import { useNetwork } from "@/lib/useNetwork";
 
 import { useState } from "react";
 import { Activity, AlertTriangle, CheckCircle2, Copy, ExternalLink, Loader2 } from "lucide-react";
@@ -105,6 +106,7 @@ function TxRow({ tx }: { tx: TxEntry }) {
 export function TransactionPanel() {
   const entries = useTxLog();
   const [used, waitMs] = useRateBudget().split("|").map(Number);
+  const net = useNetwork();
 
   return (
     <div className="brand-card p-5 space-y-3">
@@ -117,7 +119,7 @@ export function TransactionPanel() {
           Every write shows its hash and status here. <strong>ACCEPTED</strong> means validators reached consensus; the contract outcome (SUCCESS or ERROR) is
           shown separately, because a refused call is still ACCEPTED.
         </p>
-        {currentNetwork().rateLimited && (
+        {net.rateLimited && (
         <p className="text-xs text-muted-foreground mt-2" title="GenLayer Studio allows 30 contract reads and sends per minute per IP; this app stays under its own budget.">
           Studio requests from this tab in the last minute: <strong className="text-foreground">{used}/{BUDGET}</strong>
           {waitMs > 0 && <span className="text-[#B45309]"> · next slot in {Math.ceil(waitMs / 1000)}s</span>}

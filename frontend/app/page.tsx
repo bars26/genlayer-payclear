@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BookOpenCheck, Coins, Loader2, MapPin, RefreshCw, ScanSearch } from "lucide-react";
 import { AuditCard } from "@/components/AuditCard";
 import { BoardChecker } from "@/components/BoardChecker";
@@ -12,7 +12,8 @@ import { TransactionPanel } from "@/components/TransactionPanel";
 import { Button } from "@/components/ui/button";
 import { LAWS, scoreOf } from "@/lib/contracts/types";
 import { useRegistry } from "@/lib/hooks/usePayClear";
-import { NETWORKS, addressUrl, currentNetworkId, type NetworkId } from "@/lib/network";
+import { addressUrl } from "@/lib/network";
+import { useNetwork } from "@/lib/useNetwork";
 
 const STEPS = [
   { icon: ScanSearch, title: "Pick a board", body: "Any employer's public Greenhouse or Ashby job board. Anyone opens an audit; no employer sign-up." },
@@ -24,9 +25,7 @@ const STEPS = [
 export default function HomePage() {
   const { programs, audits, isLoading, isError, error, isFetching, refetch, fetchedAt } = useRegistry();
   const [creating, setCreating] = useState(false);
-  const [netId, setNetId] = useState<NetworkId>("bradbury");
-  useEffect(() => setNetId(currentNetworkId()), []);
-  const net = NETWORKS[netId];
+  const net = useNetwork();
   const ranked = [...audits].sort((a, b) => (scoreOf(a) ?? 2) - (scoreOf(b) ?? 2) || Number(b.id.split("_")[1]) - Number(a.id.split("_")[1]));
   const read = audits.reduce((t, a) => t + Number(a.n_read), 0);
   const missing = audits.reduce((t, a) => t + Number(a.n_missing), 0);

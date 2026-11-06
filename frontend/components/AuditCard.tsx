@@ -73,7 +73,7 @@ export function AuditCard({ audit, program }: { audit: Audit; program?: Program 
           <p className="text-sm text-muted-foreground">
             {Number(audit.n_listed) + Number(audit.n_text)} of {Number(audit.n_listed) + Number(audit.n_text) + Number(audit.n_missing)} checkable postings in
             pay-transparency states show pay · {read} postings read in {String(audit.n_steps)} step{Number(audit.n_steps) === 1 ? "" : "s"}
-            {paidTotal > 0n && <> · {formatGen(paidTotal, 4)} GEN paid to auditors</>}
+            {paidTotal > 0n && <> · {formatGen(paidTotal, 4)} GEN credited to auditors</>}
           </p>
         </div>
         {audit.state === "running" && (

@@ -6,6 +6,7 @@ import { formatGen } from "@/lib/contracts/types";
 import { useWallet } from "@/lib/genlayer/wallet";
 import { usePayClearContract, usePayClearWrite } from "@/lib/hooks/usePayClear";
 import { currentNetwork } from "@/lib/network";
+import { useNetwork } from "@/lib/useNetwork";
 import { Button } from "./ui/button";
 
 /**
@@ -16,7 +17,7 @@ export function OwedCard() {
   const { address, isConnected } = useWallet();
   const contract = usePayClearContract();
   const { writeAsync, pending } = usePayClearWrite();
-  const net = currentNetwork();
+  const net = useNetwork();
   const q = useQuery({
     queryKey: ["owed", net.id, address],
     enabled: !!contract && !!address,

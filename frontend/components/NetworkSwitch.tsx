@@ -1,12 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { NETWORKS, currentNetworkId, switchNetwork, type NetworkId } from "@/lib/network";
+import { NETWORKS, switchNetwork, type NetworkId } from "@/lib/network";
+import { useNetwork } from "@/lib/useNetwork";
 
 /** Bradbury testnet or GenLayer Studio: the same contract on both; switching reloads the page on the other network. */
 export function NetworkSwitch() {
-  const [id, setId] = useState<NetworkId>("bradbury");
-  useEffect(() => setId(currentNetworkId()), []);
+  const id = useNetwork().id;
   return (
     <div className="flex rounded-lg border border-border bg-white/70 p-0.5 text-xs" role="group" aria-label="GenLayer network">
       {(Object.keys(NETWORKS) as NetworkId[]).map((n) => (

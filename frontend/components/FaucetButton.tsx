@@ -6,6 +6,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Droplets, ExternalLink, Loader2 } from "lucide-react";
 import { useWallet } from "@/lib/genlayer/wallet";
 import { currentNetwork } from "@/lib/network";
+import { useNetwork } from "@/lib/useNetwork";
 import { fetchGenBalance, useGenBalance } from "@/lib/hooks/useGenBalance";
 import { formatGen } from "@/lib/contracts/types";
 import { error, success } from "@/lib/utils/toast";
@@ -22,7 +23,7 @@ export function FaucetButton() {
   const { data: balance } = useGenBalance(address);
   const qc = useQueryClient();
   const [busy, setBusy] = useState(false);
-  const net = currentNetwork();
+  const net = useNetwork();
   if (!isConnected || !address) return null;
   const shown = balance !== undefined && (
     <span className="hidden sm:inline text-sm font-mono text-muted-foreground" title={`On-chain balance on ${net.label}`}>

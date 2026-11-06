@@ -32,7 +32,7 @@ export const NETWORKS: Record<NetworkId, Network> = {
     rpc: "https://rpc.testnet-chain.genlayer.com",
     readRpc: "https://rpc-bradbury.genlayer.com",
     explorer: "https://explorer-bradbury.genlayer.com",
-    contract: process.env.NEXT_PUBLIC_BRADBURY_CONTRACT || "0x0000000000000000000000000000000000000000",
+    contract: process.env.NEXT_PUBLIC_BRADBURY_CONTRACT || "0xae3C8CfC29CDf8842EEadd3F51E88684C47918d7",
     faucet: "https://testnet-faucet.genlayer.foundation",
     rateLimited: false,
   },
@@ -89,3 +89,4 @@ export function switchNetwork(id: NetworkId) {
 
 export const txUrl = (n: Network, hash: string) => `${n.explorer}/tx/${hash}`;
 export const addressUrl = (n: Network, address: string) => `${n.explorer}/address/${address}`;
+

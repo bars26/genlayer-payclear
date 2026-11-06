@@ -33,7 +33,7 @@ scope and how it will be read. The same contract runs on two networks; switch at
 
 | Network | Contract | Source | Test GEN |
 |---|---|---|---|
-| **Bradbury testnet** (Phase 2, chain 4221) | [`BRADBURY_ADDRESS`](https://explorer-bradbury.genlayer.com/address/BRADBURY_ADDRESS) | `contracts/pay_clear.bradbury.py` | [testnet faucet](https://testnet-faucet.genlayer.foundation) |
+| **Bradbury testnet** (Phase 2, chain 4221) | [`0xae3C8CfC29CDf8842EEadd3F51E88684C47918d7`](https://explorer-bradbury.genlayer.com/address/0xae3C8CfC29CDf8842EEadd3F51E88684C47918d7) | `contracts/pay_clear.bradbury.py` | [testnet faucet](https://testnet-faucet.genlayer.foundation) |
 | GenLayer Studio (chain 61999) | [`0x6dEc38B51C07120b910fe6b0a6c07b3Cf92A238D`](https://explorer-studio.genlayer.com/address/0x6dEc38B51C07120b910fe6b0a6c07b3Cf92A238D) | `contracts/pay_clear.py` | **Test GEN** button |
 
 ## What is new in v2
